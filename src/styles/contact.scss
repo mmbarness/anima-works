@@ -1,0 +1,30 @@
+#contact-container{
+    width: 70%; 
+    margin: auto;
+}
+
+.contact-form{
+    display: flex;
+    flex-flow: column;
+    label{
+        align-self: flex-start;
+    }
+    input{
+        line-height: 2rem;
+    }
+    *{
+        margin:.25rem 0rem;
+    }
+    #contact-submit-btn{
+        background-color:#52a376;
+        color: white;
+        border-radius: .25rem;
+        border: none;
+        width: 30%;
+        align-self: center;
+        margin: 1rem 0rem;
+    }
+    #contact-submit-btn:hover{
+        cursor:pointer;
+    }
+}
