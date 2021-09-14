@@ -1,0 +1,15 @@
+#gear-container{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: auto;
+    grid-template-areas: "header" "gear-list";
+    #gear-header{
+        align-self: center;
+        font-size: 2rem;
+    }
+    #gear-list{
+        #camera-package{
+            list-style-type: none;
+        }
+    }
+}

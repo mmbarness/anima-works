@@ -27,11 +27,14 @@ export const NavBar = () => {
 
     return(
         <div id="navBar">
-            {renderHomeLink()}
-            {toWork}
-            {toAbout}
-            {toGear}
-            {toContact}
+            <p>Anima Works</p>
+            <div id="navBar-links">
+                {renderHomeLink()}
+                {toWork}
+                {toAbout}
+                {toGear}
+                {toContact}
+            </div>
         </div>
     )
 }
