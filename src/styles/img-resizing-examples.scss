@@ -1,0 +1,18 @@
+.img-container {
+  width: 50%;
+  height: 200px;
+  overflow: hidden;
+}
+ 
+.img-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  background-image: url('#'); //# is a placeholder for an image URL
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; //The image will cover the entire background of the element, all while keeping the image in proportion. If the dimensions of the image exceed the dimensions of the container then only a portion of the image will display.
+}

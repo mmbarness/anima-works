@@ -1,0 +1,23 @@
+#about-container{
+    display:flex;
+    flex-flow:row;
+    justify-content: space-between;
+    width: 70vw;
+    margin: auto;
+}
+
+#about-block{
+    width: 60%
+}
+
+#about-img-container {
+  width: 30%;
+  height: auto;
+  overflow: hidden;
+}
+ 
+#about-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

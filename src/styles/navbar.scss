@@ -1,0 +1,10 @@
+#navBar{
+    grid-area: nav;
+    z-index: 1000;
+    display: flex;
+    justify-content:space-evenly;
+}
+
+#underline-me{
+    text-decoration: underline;
+}

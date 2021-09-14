@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+#app-container{
+    display:grid;
+    grid-template-areas:"nav"
+                        "main"
+                        "footer";
+    grid-template-rows: 5% 80% 15%;
+    height: 100vh;
+    font-family: 'Lora', serif;
+}
+
+#navBar{
+    height: 5%
+}
+
+#main-navigation{
+    grid-area: main;
+    z-index: 1;
+}
+
+#footer{
+    grid-area:footer;
+}
+
+a{
+    text-decoration: none;
+}
