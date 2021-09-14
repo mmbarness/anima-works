@@ -4,14 +4,23 @@ import emailjs from 'emailjs-com'
 
 export const contact = () => {
 
-    const sendEmail = (e) => {
+    const sendEmail = async (e) => {
         e.preventDefault();
+        const sendBtn = document.getElementById('contact-submit-btn')
         emailjs.sendForm('service_sjnz7oq', 'template_6dj2gbm', e.target, 'user_qq0BsoTqEV0SBv3Iw0Lvk')
             .then((result) => {
                 
             }, (error) => {
                 
         });
+        sendBtn.value = "Sending..."
+        await new Promise(r => setTimeout(r, 1000));
+        sendBtn.value = "Sent!"
+        await new Promise(r => setTimeout(r, 250));
+        sendBtn.disabled = true
+        sendBtn.style.backgroundColor = "grey"
+        sendBtn.style.pointerEvents = "none"
+        // sendBtn.value = "Send"
     }
 
     return(

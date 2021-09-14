@@ -27,9 +27,9 @@ export const NavBar = () => {
 
     return(
         <div id="navBar">
-            <p>Anima Works</p>
+            <p><Link to="/" id={underlineMe("/")}>Anima Works</Link></p>
             <div id="navBar-links">
-                {renderHomeLink()}
+
                 {toWork}
                 {toAbout}
                 {toGear}
