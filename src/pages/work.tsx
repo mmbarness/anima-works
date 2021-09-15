@@ -2,6 +2,7 @@ import { render } from '@testing-library/react'
 import {portfolioInfo} from '../assets/workLinks'
 import '../styles/work.scss'
 import { Component, ReactDOM } from 'react'
+import ReactPlayer from 'react-player'
 
 
 export const work = () => {
@@ -13,6 +14,17 @@ export const work = () => {
             return `https://player.vimeo.com/video/${videoHash}`
         }
     }
+
+    const renderReactPlayer = (type: string, videoHash: string) => (
+        <ReactPlayer
+            url={renderLink(type, videoHash)}
+            className="work-video"
+            width="100%"
+            height="100%"
+            light={true}
+            controls={false}
+        />
+    )
 
     const renderEmbed = (type: string, videoHash: string) => (
         <iframe 
@@ -26,7 +38,8 @@ export const work = () => {
     
 
     const renderLinks = (video: any, i:number) =>{ 
-        const embedCode = renderEmbed(video.linkInfo.type, video.linkInfo.videoHash)
+        // const embedCode = renderEmbed(video.linkInfo.type, video.linkInfo.videoHash)
+        const embedCode = renderReactPlayer(video.linkInfo.type, video.linkInfo.videoHash)
         let title 
         if (video.linkInfo.artist === undefined) {
             title = video.linkInfo.title 
