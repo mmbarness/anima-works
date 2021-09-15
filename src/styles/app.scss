@@ -36,7 +36,8 @@ body{
             "nav"
             "main"
             "footer";
-        height: fit-content;
+        min-height: 80vh;
+        max-height: fit-content;
         width: 80vw;
         grid-template-rows: 10% 80% 10%;
         font-family: 'Lora', serif;
