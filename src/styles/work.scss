@@ -1,3 +1,13 @@
+#work-container{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    p{
+        color:#52a376;
+        font-size: calc((2 - 1) * 1vw + 1rem);
+    }
+}
+
 #video-container{
     display: grid; 
     grid-template-areas: "left-column"
@@ -20,6 +30,10 @@
     align-items: flex-start;
     font-weight: 400;
     font-style: italic;
+    padding-left: 0px;
+    li{
+        margin: 5px 0;
+    }
 }
 
 .left-column{

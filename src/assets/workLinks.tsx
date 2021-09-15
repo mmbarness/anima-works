@@ -274,7 +274,7 @@ export const portfolioInfo: portfolioInfoEle[] = [
             "Director of Photography": ANIMA_WORKS,
             "Post": "Claire Johnson",
             "Link":"https://vimeo.com/237748083", 
-            "type": "Youtube",        
+            "type": "Vimeo",        
             "videoHash": "237748083",    
             "embedCode":
                 <iframe 

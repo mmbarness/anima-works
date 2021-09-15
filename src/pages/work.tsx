@@ -52,7 +52,7 @@ export const work = () => {
 
     return(
         <div id="work-container">
-            VIDEO
+            <p>VIDEO</p>
             <div id="video-container">
                 {portfolioInfo.map(video => (
                     renderLinks(video, i++)
