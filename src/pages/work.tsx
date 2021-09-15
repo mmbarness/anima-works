@@ -35,7 +35,11 @@ export const work = () => {
             allowFullScreen>
         </iframe>
     )
-    
+
+    const renderLI = (category: string, defined:boolean, data?: string) => {
+        const li = <li className="video-item-text">{category}: {data}</li>
+        return (defined) ? li : undefined 
+    }    
 
     const renderLinks = (video: any, i:number) =>{ 
         // const embedCode = renderEmbed(video.linkInfo.type, video.linkInfo.videoHash)
@@ -51,11 +55,11 @@ export const work = () => {
             <div className={gridId}>
                 {embedCode}
                 <ul className="video-item-text-container">
-                    <li className="video-item-text">{title}</li>
-                    <li className="video-item-text">Production: {video.linkInfo.Production}</li>
-                    <li className="video-item-text">Director: {video.linkInfo.Director}</li>
-                    <li className="video-item-text">Director of Photography: {video.linkInfo['Director of Photography']}</li>
-                    <li className="video-item-text">Post: {video.linkInfo.Post}</li>
+                    {renderLI('Title', true, title)}
+                    {renderLI('Production', (video.linkInfo.Production !== undefined), video.linkInfo.Production)}
+                    {renderLI('Director', (video.linkInfo.Director !== undefined), video.linkInfo.Director)}
+                    {renderLI('Director of Photography', (video.linkInfo['Director of Photography'] !== undefined), video.linkInfo['Director of Photography'])}
+                    {renderLI('Post', (video.linkInfo.Post !== undefined), video.linkInfo.Post)}
                 </ul>
             </div>
         return (embed)
