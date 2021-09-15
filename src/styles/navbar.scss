@@ -26,4 +26,17 @@
         font-size: calc((2 - 1) * 1vw + .5rem);
         margin: 0px 5px;
     }
+    #navBar-links a{
+        font-size: calc((2 - 1) * 1vw + .25rem);
+    }
+}
+
+@media screen and (min-width: 2120px) and (orientation: landscape){
+    #navBar p {
+        font-size: calc((2 - 1) * 1vw + 1rem);
+        margin: 0px 5px;
+    }
+    #navBar-links a{
+        font-size: calc((2 - 1) * 1vw);
+    }
 }
