@@ -37,7 +37,7 @@ export const work = () => {
     )
 
     const renderLI = (category: string, defined:boolean, data?: string) => {
-        const li = <li className="video-item-text">{category}: {data}</li>
+        const li = <li className={`video-item-text ${category}-li`}>{category}: {data}</li>
         return (defined) ? li : undefined 
     }    
 
@@ -55,7 +55,7 @@ export const work = () => {
             <div className={gridId}>
                 {embedCode}
                 <ul className="video-item-text-container">
-                    {renderLI('Title', true, title)}
+                    <li className="video-item-text Title-li">{title}</li>
                     {renderLI('Production', (video.linkInfo.Production !== undefined), video.linkInfo.Production)}
                     {renderLI('Director', (video.linkInfo.Director !== undefined), video.linkInfo.Director)}
                     {renderLI('Director of Photography', (video.linkInfo['Director of Photography'] !== undefined), video.linkInfo['Director of Photography'])}
