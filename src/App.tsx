@@ -7,6 +7,7 @@ import { gear } from './pages/gear';
 import { home } from './pages/home';
 import { work } from './pages/work';
 import { NavBar } from './pages/navBar';
+import { NavBarPortrait } from './pages/navBarPortrait';
 import { Footer } from './pages/footer';
 import './styles/app.scss'
 
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <div className="App" id="app-container">
       <Router>
+        <NavBarPortrait/>
         <NavBar/>
         <div id="main-navigation">
           <Route exact path ="/" component={home}/>

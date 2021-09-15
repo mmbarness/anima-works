@@ -37,7 +37,12 @@
     align-items: flex-start;
     font-weight: 400;
     font-style: italic;
+    letter-spacing: .03em;
     padding-left: 0px;
+    .Title-li{
+        font-weight:600;
+        font-style:normal;
+    }
     li{
         margin: 5px 0;
     }

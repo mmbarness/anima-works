@@ -1,27 +1,61 @@
-#navBar{
-    grid-area: nav;
-    z-index: 1000;
-    display: flex;
-    justify-content:space-between;
-    padding-top:0.5rem;
-    #navBar-links{
-        display: flex;
-        justify-content: space-between;
-        width: 30%;
-        margin: 0px 5px
+@media (orientation:portrait){
+    #navBar-landscape{
+        display: none;
     }
-    p a{
-        color:#52a376;
-        text-decoration: none;
+    #navBar-portrait{
+        grid-area: nav;
+        z-index: 1000;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+        padding-top: 0.5rem;
+        width: auto;
+        #navBar-links{
+            display: flex;
+            justify-content: space-between;
+            margin: 0px 5px
+        }
+        p{
+            margin: 0px;
+        }
+        p a{
+            color:#52a376;
+            text-decoration: none;
+        }
+    }
+
+}
+
+@media (orientation:landscape){
+    #navBar-portrait{
+        display: none;
+    }
+    #navBar-landscape{
+        grid-area: nav;
+        z-index: 1000;
+        display: flex;
+        justify-content:space-between;
+        padding-top:0.5rem;
+        #navBar-links{
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+            margin: 0px 5px
+        }
+        p a{
+            color:#52a376;
+            text-decoration: none;
+        }
     }
 }
+
 
 #underline-me{
     text-decoration: underline;
 }
 
 @media screen and (min-width: 0px) and (max-width:1499px) and (orientation: landscape){
-    #navBar p {
+    #navBar-landscape p {
         font-size: calc((2 - 1) * 1vw + .5rem);
         margin: 0px 5px;
     }
@@ -31,7 +65,7 @@
 }
 
 @media screen and (min-width: 1500px) and (max-width: 2119px) and (orientation: landscape){
-    #navBar p {
+    #navBar-landscape p {
         font-size: calc((2 - 1) * 1vw + .5rem);
         margin: 0px 5px;
     }
@@ -41,7 +75,7 @@
 }
 
 @media screen and (min-width: 2120px) and (orientation: landscape){
-    #navBar p {
+    #navBar-landscape p {
         font-size: calc((2 - 1) * 1vw + 1rem);
         margin: 0px 5px;
     }
