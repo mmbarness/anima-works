@@ -4,6 +4,7 @@
     }
     #navBar-portrait{
         grid-area: nav;
+        // max-height: 12%;
         z-index: 1000;
         display: flex;
         flex-flow: column;

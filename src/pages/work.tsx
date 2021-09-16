@@ -15,10 +15,10 @@ export const work = () => {
         }
     }
 
-    const renderReactPlayer = (type: string, videoHash: string) => (
+    const renderReactPlayerDesktop = (type: string, videoHash: string) => (
         <ReactPlayer
             url={renderLink(type, videoHash)}
-            className="work-video"
+            className="work-video-desktop"
             width="100%"
             height="100%"
             light={true}
@@ -26,14 +26,15 @@ export const work = () => {
         />
     )
 
-    const renderEmbed = (type: string, videoHash: string) => (
-        <iframe 
-            width="640" height="360" 
-            src={renderLink(type, videoHash)}
-            title={(type === "Youtube") ? "YouTube video player" :"vimeo-player"} 
-            frameBorder="0" 
-            allowFullScreen>
-        </iframe>
+    const renderReactPlayerMobile = (type: string, videoHash: string) => (
+        <ReactPlayer
+            url={renderLink(type, videoHash)}
+            className="work-video-mobile"
+            width="100%"
+            height="100%"
+            light={true}
+            controls={false}
+        />
     )
 
     const renderLI = (category: string, defined:boolean, data?: string) => {
@@ -42,8 +43,8 @@ export const work = () => {
     }    
 
     const renderLinks = (video: any, i:number) =>{ 
-        // const embedCode = renderEmbed(video.linkInfo.type, video.linkInfo.videoHash)
-        const embedCode = renderReactPlayer(video.linkInfo.type, video.linkInfo.videoHash)
+        const desktopReactPlayer = renderReactPlayerDesktop(video.linkInfo.type, video.linkInfo.videoHash)
+        const mobileReactPlayer = renderReactPlayerMobile(video.linkInfo.type, video.linkInfo.videoHash)
         let title 
         if (video.linkInfo.artist === undefined) {
             title = video.linkInfo.title 
@@ -53,7 +54,8 @@ export const work = () => {
         let gridId = (i % 2 === 0) ? "left-column video-item" : "right-column video-item"
         let embed =             
             <div className={gridId}>
-                {embedCode}
+                {desktopReactPlayer}
+                {mobileReactPlayer}
                 <ul className="video-item-text-container">
                     <li className="video-item-text Title-li">{title}</li>
                     {renderLI('Production', (video.linkInfo.Production !== undefined), video.linkInfo.Production)}
