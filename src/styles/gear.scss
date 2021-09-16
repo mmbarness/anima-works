@@ -1,15 +1,42 @@
-#gear-container{
-    display: grid;
-    grid-template-columns: 25% 75%;
-    grid-template-rows: auto;
-    grid-template-areas: "header" "gear-list";
-    #gear-header{
-        align-self: center;
-        font-size: 2rem;
+@media (orientation: portrait) {
+    #gear-container{
+        display: grid;
+        grid-template-rows: 7.5% 87.5%;
+        grid-template-areas:
+            "header"
+            "gear-list";
+        min-height: 80vh;
+        width: 85vw;
+        #gear-header{
+            align-self: center;
+            font-size: 2rem;
+        }
+        #gear-list{
+            max-height: 80vh;
+            .camera-package{
+                list-style-type: none;
+                font-size: 1em;
+                margin: 0em;
+                padding: 0em;
+            }
+        }
     }
-    #gear-list{
-        #camera-package{
-            list-style-type: none;
+}
+
+@media (orientation: landscape) {
+    #gear-container{
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-template-rows: auto;
+        grid-template-areas: "header" "gear-list";
+        #gear-header{
+            align-self: center;
+            font-size: 2rem;
+        }
+        #gear-list{
+            #camera-package{
+                list-style-type: none;
+            }
         }
     }
 }

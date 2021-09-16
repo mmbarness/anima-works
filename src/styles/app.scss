@@ -3,7 +3,7 @@
 #root{
     display: flex;
     justify-content: center;
-    min-height: -webkit-fill-available;
+    // min-height: -webkit-fill-available;
 }
 
 body{
@@ -46,6 +46,7 @@ body{
         max-height: fit-content;
         width: 80vw;
         grid-template-rows: 10% 80% 10%;
+        grid-template-columns: 100%;
         font-family: 'Lora', serif;
         caret-color: transparent;
     }

@@ -5,7 +5,7 @@ import '../styles/gear.scss'
 export const gear = () => {
 
     const renderPackage = (cameraPackage: singlePackage) => (
-        <ul id="camera-package">
+        <ul className="camera-package">
             <h3 className="camera-package-title">
                 {cameraPackage.packageName}
             </h3>
