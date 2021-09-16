@@ -54,6 +54,7 @@ body{
 
 #main-navigation{
     display: flex;
+    justify-content: center;
     grid-area: main;
     z-index: 1;
     margin: 1rem 0rem;

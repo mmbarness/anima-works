@@ -8,6 +8,7 @@
         min-height: 80vh;
         width: 85vw;
         #gear-header{
+            color:#52a376;
             align-self: center;
             font-size: 2rem;
         }
@@ -30,12 +31,16 @@
         grid-template-rows: auto;
         grid-template-areas: "header" "gear-list";
         #gear-header{
+            color:#52a376;
             align-self: center;
             font-size: 2rem;
         }
         #gear-list{
-            #camera-package{
+            .camera-package{
                 list-style-type: none;
+                .camera-package-title{
+                    color:#52a376;
+                }
             }
         }
     }
