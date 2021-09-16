@@ -53,6 +53,7 @@ body{
 }
 
 #main-navigation{
+    display: flex;
     grid-area: main;
     z-index: 1;
     margin: 1rem 0rem;
