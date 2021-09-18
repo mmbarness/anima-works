@@ -1,6 +1,16 @@
-#contact-container{
-    width: 70%; 
-    margin: auto;
+
+@media (orientation: landscape) {
+    #contact-container{
+        width: 50%; 
+        margin: auto;
+    }
+}
+
+@media (orientation: portrait) {
+    #contact-container{
+        width: 80%; 
+        margin: auto;
+    }
 }
 
 .contact-form{
