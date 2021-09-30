@@ -32,7 +32,7 @@ export const work = () => {
             className="work-video-mobile"
             width="100%"
             height="100%"
-            light={true}
+            light={type === 'Youtube' ? true : false}
             controls={true}
         />
     )
