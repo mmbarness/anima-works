@@ -21,8 +21,8 @@ export const work = () => {
             className="work-video-desktop"
             width="100%"
             height="100%"
-            light={true}
-            controls={false}
+            light={type === 'Youtube' ? true : false}
+            controls={true}
         />
     )
 
@@ -33,7 +33,7 @@ export const work = () => {
             width="100%"
             height="100%"
             light={true}
-            controls={false}
+            controls={true}
         />
     )
 
