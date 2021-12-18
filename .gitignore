@@ -15,7 +15,7 @@ pics/
 
 secrets.json
 process.env
-
+.env
 # misc
 .DS_Store
 .env.local
