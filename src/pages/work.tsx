@@ -1,7 +1,5 @@
-import { render } from '@testing-library/react'
 import {portfolioInfo} from '../assets/workLinks'
 import '../styles/work.scss'
-import { Component, ReactDOM } from 'react'
 import ReactPlayer from 'react-player'
 
 
