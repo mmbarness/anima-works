@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.7.1",
     "@sanity/client": "^2.23.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -10,6 +11,7 @@
     "@types/node": "^16.9.1",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
+    "@types/react-redux": "^7.1.20",
     "@types/react-router-dom": "^5.1.8",
     "emailjs-com": "^3.2.0",
     "node-sass": "^6.0.1",

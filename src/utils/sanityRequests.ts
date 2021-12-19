@@ -6,14 +6,17 @@ const todaysUTCDate= `${today.getUTCFullYear()}-${today.getUTCMonth()}-${today.g
 const client = sanityClient({
   projectId: 'uvsp04xk',
   dataset: 'production',
-  apiVersion: "2021-12-12",
-  token:  process.env.REACT_APP_SANITY_TOKEN,// or leave blank for unauthenticated usage
+  apiVersion: "2021-12-18",
+//   token:  process.env.REACT_APP_SANITY_TOKEN,// or leave blank for unauthenticated usage
   useCdn: true, // `false` if you want to ensure fresh data
 })
 
-export const fetchVideos = async () => {
+export const fetchSanityVideos = async () => {
   const query = `*[_type == "video"]`
-  const result = await client.fetch(query)
-  console.log(result)
-  return result
+  try {
+    const result = await client.fetch(query)
+    return result
+  } catch (error) {
+    console.log({error})
+  }
 }

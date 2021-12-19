@@ -1,6 +1,6 @@
-import { allGear } from "../assets/gearInfo"
-import { singlePackage } from "../interfaces/assetTypes"
-import '../styles/gear.scss'
+import { allGear } from "../../assets/gearInfo"
+import { singlePackage } from "../../interfaces/assetTypes"
+import '../../styles/gear.scss';
 
 export const gear = () => {
 

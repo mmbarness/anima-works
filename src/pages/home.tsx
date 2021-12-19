@@ -1,8 +1,11 @@
 import React from 'react'
 import '../styles/home.scss'
-import { fetchVideos } from '../utils/sanityRequests'
+import { fetchSanityVideos } from '../utils/sanityRequests'
 
 export const home = () => {
+
+    console.log({'token': process.env.REACT_APP_SANITY_TOKEN})
+    console.log(fetchSanityVideos())
 
     return(
         <div id="home-container">

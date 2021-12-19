@@ -1,7 +1,6 @@
-import {portfolioInfo} from '../assets/workLinks'
-import '../styles/work.scss'
+import {portfolioInfo} from '../../assets/workLinks'
+import '../../styles/work.scss';
 import ReactPlayer from 'react-player'
-
 
 export const work = () => {
 

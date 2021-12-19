@@ -1,11 +1,11 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, useLocation} from 'react-router-dom'
 import './App.css';
-import { about } from './pages/about';
+import { about } from './features/about/about';
 import { contact } from './pages/contact';
-import { gear } from './pages/gear';
+import { gear } from './features/gear/gear';
 import { home } from './pages/home';
-import { work } from './pages/work';
+import { work } from './features/work/workIndex';
 import { NavBar } from './pages/navBar';
 import { NavBarPortrait } from './pages/navBarPortrait';
 import { Footer } from './pages/footer';
