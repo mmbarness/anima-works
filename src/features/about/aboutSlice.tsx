@@ -3,7 +3,7 @@ import { fetchAboutInfo} from '../../utils/sanityRequests';
 import { AboutInfo } from '../../interfaces/sanityTypes';
 
 const initialState: any = {
-    'LOADING': true,
+    'LOADED': false,
 }
 
 export interface IAppState {
@@ -28,7 +28,7 @@ export const aboutSlice = createSlice({
           for (const item of payload) {
             state.info = item
           }
-          state['LOADING'] = false; 
+          state['LOADED'] = true; 
           return state; 
         })
     },

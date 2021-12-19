@@ -3,7 +3,7 @@ import { fetchWork } from '../../utils/sanityRequests';
 import {  WorkItem } from '../../interfaces/sanityTypes';
 
 const initialState: any = {
-    'LOADING': true,
+    'LOADED': false,
 }
 
 export const fetchWorkAction = createAsyncThunk<WorkItem[], never, { rejectValue: string }>(
@@ -27,7 +27,7 @@ export const workSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchWorkAction.fulfilled.type, (state, {payload}:any) => {
             state.work = payload; 
-            state['LOADING'] = false; 
+            state['LOADED'] = true; 
             return state; 
         })
     },

@@ -15,7 +15,7 @@ export const About = () => {
     const {aboutSlice} = useAppSelector(state => state);
 
     const renderPage = () => {
-        if (!aboutSlice.LOADING) {
+        if (aboutSlice.LOADED) {
             const text = aboutSlice.info.aboutPageText[0].children[0].text
             const imageUrl = sanityImager(aboutSlice.info.aboutPageImage).width(500).url()
             return (

@@ -3,7 +3,7 @@ import { fetchAboutInfo, fetchGear} from '../../utils/sanityRequests';
 import { AboutInfo, GearItem } from '../../interfaces/sanityTypes';
 
 const initialState: any = {
-    'LOADING': true,
+    'LOADED': false,
 }
 
 export interface IAppState {
@@ -31,7 +31,7 @@ export const gearSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchGearAction.fulfilled.type, (state, {payload}:any) => {
             state.gear = payload; 
-            state['LOADING'] = false; 
+            state['LOADED'] = true; 
             return state; 
         })
     },

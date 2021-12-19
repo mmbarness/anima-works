@@ -4,7 +4,7 @@ import '../styles/footer.scss'
 export const Footer = () =>{
 
     const {aboutSlice} = useAppSelector(state => state); 
-    const [email, instagram] = aboutSlice.LOADING ? ['loading', 'loading'] : [aboutSlice.info.email, aboutSlice.info.instagram];
+    const [email, instagram] = !aboutSlice.LOADED ? ['loading', 'loading'] : [aboutSlice.info.email, aboutSlice.info.instagram];
 
     return(
         <div id="footer">
