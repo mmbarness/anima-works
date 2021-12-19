@@ -1,4 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import aboutSlice from '../features/about/aboutSlice';
+import gearSlice from '../features/gear/gearSlice';
+import workSlice from '../features/work/workSlice';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -13,7 +16,9 @@ export const store = configureStore({
       },
     }),
   reducer: {
-
+    aboutSlice,
+    gearSlice,
+    workSlice
   },
 });
 

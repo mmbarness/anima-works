@@ -2,7 +2,7 @@ import '../styles/contact.scss'
 import emailjs from 'emailjs-com'
 //p sure emailjs lacks typings, so this file is jsx
 
-export const contact = () => {
+export const Contact = () => {
 
     const sendEmail = async (e) => {
         e.preventDefault();

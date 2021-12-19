@@ -19,7 +19,7 @@ export interface portfolioInfoEle {
 }
 
 export interface singlePackage {
-    "packageName": string 
+    "name": string 
     "features": Array<string>
 }
 

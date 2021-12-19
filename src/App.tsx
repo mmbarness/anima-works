@@ -1,11 +1,11 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, useLocation} from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css';
-import { about } from './features/about/about';
-import { contact } from './pages/contact';
-import { gear } from './features/gear/gear';
-import { home } from './pages/home';
-import { work } from './features/work/workIndex';
+import { About } from './features/about/about';
+import { Contact } from './pages/contact';
+import { Gear } from './features/gear/gear';
+import { Home } from './pages/home';
+import { Work } from './features/work/workIndex';
 import { NavBar } from './pages/navBar';
 import { NavBarPortrait } from './pages/navBarPortrait';
 import { Footer } from './pages/footer';
@@ -19,11 +19,11 @@ const App = () => {
         <NavBarPortrait/>
         <NavBar/>
         <div id="main-navigation">
-          <Route exact path ="/" component={home}/>
-          <Route path ="/about" component={about}/>
-          <Route path ="/contact" component={contact}/>
-          <Route path = "/gear" component={gear}/>
-          <Route path = "/work" component={work}/>
+          <Route exact path ="/" component={Home}/>
+          <Route path ="/about" component={About}/>
+          <Route path ="/contact" component={Contact}/>
+          <Route path = "/gear" component={Gear}/>
+          <Route path = "/work" component={Work}/>
         </div>
         <Footer/>
       </Router>

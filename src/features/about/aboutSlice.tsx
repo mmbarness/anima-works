@@ -1,44 +1,38 @@
-import { createAsyncThunk, createSlice, current, PayloadAction } from '@reduxjs/toolkit';
-import { Set } from 'typescript';
-import { fetchSanityVideos } from '../../utils/sanityRequests';
+import { createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import { fetchAboutInfo} from '../../utils/sanityRequests';
+import { AboutInfo } from '../../interfaces/sanityTypes';
 
+const initialState: any = {
+    'LOADING': true,
+}
 
-const initialState: IAppState = {
-    students: [],
-}
-interface updateTagsProps {
-    id: string
-    data: {
-        tags: Set<string>
-        id?: number
-    }
-}
 export interface IAppState {
-    students: Student[] 
+    info: AboutInfo
 }
 
-export const fetchVideos = createAsyncThunk<Student[], never, { rejectValue: string }>(
-    'students/fetchStudents',
+export const fetchInfo = createAsyncThunk<AboutInfo[], never, { rejectValue: string }>(
+    'about/fetchInfo',
     async () => {
-      const response = await fetchSanityVideos();
+      const response = await fetchAboutInfo();
       return response
     }
 );
 
-export const studentSlice = createSlice({
-    name: 'students',
+export const aboutSlice = createSlice({
+    name: 'about',
     initialState,
     reducers: {
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchVideos.fulfilled.type, (state, {payload}:any) => {
-          state.students = (payload.map((student:Student) => {
-                student.tags = new Set<string>()
-                return student
-            }));
+        builder.addCase(fetchInfo.fulfilled.type, (state, {payload}:any) => {
+          for (const item of payload) {
+            state.info = item
+          }
+          state['LOADING'] = false; 
+          return state; 
         })
     },
 });
 
 
-export default studentSlice.reducer
+export default aboutSlice.reducer
