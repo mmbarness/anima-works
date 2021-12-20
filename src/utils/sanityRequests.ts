@@ -1,6 +1,5 @@
 import '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
-import { WorkItem } from '../interfaces/sanityTypes';
 const sanityClient = require('@sanity/client')
 const today = new Date();
 const todaysUTCDate= `${today.getUTCFullYear()}-${today.getUTCMonth()}-${today.getUTCDate()}`
@@ -51,7 +50,7 @@ export const fetchAboutInfo = async () => {
 }
 
 export const fetchGear = async () => {
-  const query = `*[_type == "gear"]`
+  const query = `*[_type == "gear"]{_id, name, features}`
   try {
     const result = await client.fetch(query)
     return result

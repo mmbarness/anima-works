@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { singlePackage } from "../../interfaces/assetTypes"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import '../../styles/gear.scss';
-import { fetchGear } from "../../utils/sanityRequests";
 import { fetchGearAction } from "./gearSlice";
 
 export const Gear = () => {
@@ -12,17 +11,17 @@ export const Gear = () => {
 
     useEffect(() => {
         dispatch(fetchGearAction());
-    },[])
+    },[dispatch])
 
     const renderGear = () => {
         if (LOADED) {
             return gear.map((cameraPackage:singlePackage) => (
-                <ul className="camera-package">
+                <ul key={`package-ul-${cameraPackage._id}`}className="camera-package">
                     <h3 className="camera-package-title">
                         {cameraPackage.name}
                     </h3>
-                    {cameraPackage.features.map(feature => 
-                        <li>{feature}</li>    
+                    {cameraPackage.features.map((feature,index) => 
+                        <li key={`${cameraPackage._id}-feature-${index}`}>{feature}</li>    
                     )}
                 </ul>
             ))

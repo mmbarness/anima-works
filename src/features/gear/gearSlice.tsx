@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import { fetchAboutInfo, fetchGear} from '../../utils/sanityRequests';
-import { AboutInfo, GearItem } from '../../interfaces/sanityTypes';
+import { fetchGear} from '../../utils/sanityRequests';
+import { GearItem } from '../../interfaces/sanityTypes';
 
 const initialState: any = {
     'LOADED': false,

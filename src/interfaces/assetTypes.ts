@@ -19,7 +19,8 @@ export interface portfolioInfoEle {
 }
 
 export interface singlePackage {
-    "name": string 
+    "name": string,
+    "_id": string,
     "features": Array<string>
 }
 
