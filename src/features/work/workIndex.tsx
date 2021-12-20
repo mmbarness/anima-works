@@ -74,17 +74,102 @@ export const Work = () => {
                 </ul>
             </div>
         return (embed)
-    }        
-    
-    let i = 0
+    } 
 
+    const renderReactPlayer = (video: Video) => ([
+        <ReactPlayer
+            url={video.link}
+            className="work-video-desktop"
+            width="100%"
+            height="100%"
+            light={video.videoType === 'youtube' ? true : false}
+            controls={true}
+        />,
+        <ReactPlayer
+            url={video.link}
+            className="work-video-mobile"
+            width="100%"
+            height="100%"
+            light={video.videoType === 'youtube' ? true : false}
+            controls={true}
+        />,
+        ]
+    )
+
+    const renderLinks2 = (video: Video, i: number) => {
+        const [desktopPlayer, mobilePlayer] = renderReactPlayer(video);
+        const gridId = (i % 2 === 0) ? "left-column video-item" : "right-column video-item";
+        const {credits} = video;
+        return (<div className={gridId}>
+            {desktopPlayer}
+            {mobilePlayer}
+            <ul className="video-item-text-container">
+                <li className="video-item-text Title-li">{video.titleToDisplay}</li>
+                {credits.map((credit) => (
+                    <li className={`video-item-text ${credit.title}-li`}>{credit.title}: {credit.Name}</li>
+                ))}
+            </ul>
+        </div>)
+    }
+    
+    const renderWork = () => {
+        let work;
+        if (allWork) {
+            work = allWork.map((video:Video, i:number) => {
+                return (
+                    <div key={video._id}>
+                        {renderLinks2(video, i)}
+                    </div>
+                )
+            })
+        }
+        return (work ? work : 'loading')
+    }
+
+    interface Video {
+        artist?: {name: string},
+        nonprofitInstitution?: {name: string},
+        company?: {name: string},
+        credits: credits[],
+        embedCode: string,
+        link: string,
+        source: string,
+        titleOfWork: string,
+        titleToDisplay: string,
+        videoType: string,
+        _id: string
+    }
+
+    type credits = {
+        Name: string,
+        title: string,
+        link?: string
+    }
+    
+    // artist: {name: 'Show Me The Body'}
+    // credits:
+    // director: "Landon Yost"
+    // directorOfPhotography: "Andrea Gavazzi"
+    // post: "Matt Schaff"
+    // production: "ANIMA Works"
+    // [[Prototype]]: Object
+    // embedCode: "<iframe width=\"640\" height=\"378\" src=\"https://www.youtube.com/embed/B15q6Uz6inY\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+    // link: "https://youtu.be/B15q6Uz6inY"
+    // source: "youtube"
+    // titleOfWork: "Arcanum"
+    // titleToDisplay: "Show Me The Body - Arcanum"
+    // videoType: "musicVideo"
+    // _id: "0dc666bf-8115-4399-b969-bbf0e3fe4369"
+
+    let i = 0
     return(
         <div id="work-container">
             <p>VIDEO</p>
             <div id="video-container">
-                {portfolioInfo.map(video => (
+                {renderWork()}
+                {/* {portfolioInfo.map(video => (
                     renderLinks(video, i++)
-                ))}
+                ))} */}
             </div>
         </div>
     )

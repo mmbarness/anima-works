@@ -17,12 +17,12 @@ export interface WorkItem{
     nonprofitInstitution?: {name: string},
     company?: {name: string},
     embedCode: string,
-    link: string,
+    link: string, 
     source: string,
     titleOfWork: string,
     titleToDisplay: string,
     videoType:"musicVideo"|"nonprofit"|"commercial",
-    credits: object,
+    credits: Array<object>,
 }
 // artist: {_ref: '791326a1-4654-4b6b-9214-8292da8b9cef', _type: 'reference'}
 // credits: {director: 'Landon Yost', directorOfPhotography: 'Andrea Gavazzi', post: 'Matt Schaff', production: 'ANIMA Works'}
@@ -33,9 +33,9 @@ export interface WorkItem{
 // titleOfWork: "Arcanum"
 // titleToDisplay: "Show Me The Body - Arcanum"
 // videoType: "musicVideo"
-// _createdAt: "2021-12-18T20:20:00Z"
+// _createdAt: "2021-12-18T20:20:00Z" 
 // _id: "0dc666bf-8115-4399-b969-bbf0e3fe4369"
-// _rev: "Oysj875UTxs0artuxMcxp5"
+// _rev: "Oysj875UTxs0artuxMcxp5" 
 // _type: "video"
 // _updatedAt: "2021-12-18T20:20:00Z"
 

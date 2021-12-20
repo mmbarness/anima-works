@@ -13,7 +13,7 @@ const client = sanityClient({
 })
 
 export const fetchWork = async () => {
-  const primaryQuery = `*[_type == "video"]{
+  const primaryQuery = `*[_type == "video"]|order(orderRank){
     _id,
     titleOfWork,
     titleToDisplay,
