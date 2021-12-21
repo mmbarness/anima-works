@@ -61,7 +61,7 @@ export const Work = () => {
     const renderWork = () => (
         allWork.map((video:Video, i:number) => 
             <div key={video._id}>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div> </div>}>
                     <WorkItem video={video} orientation={orientation} i={i}/>
                 </Suspense>
             </div>
