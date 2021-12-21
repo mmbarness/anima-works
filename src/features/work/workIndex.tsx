@@ -4,6 +4,8 @@ import { fetchWorkAction } from './workSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { useEffect, useState } from 'react';
 
+//TODO - refactor video loading to enable lazy loading & switching between portrait and landscape
+
 export const Work = () => {
 
     const dispatch = useAppDispatch();
@@ -13,8 +15,6 @@ export const Work = () => {
     useEffect(() => {
         dispatch(fetchWorkAction());
     },[dispatch])
-
-    console.log({orientation})
 
     const renderReactPlayer = (video: Video) => ([
         <ReactPlayer
