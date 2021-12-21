@@ -11,6 +11,10 @@ const WorkItem  = React.lazy(() => import( './workItem'));
 
 export const Work = () => {
 
+    // shouldComponentUpdate(nextProps, nextState) {}
+
+    console.log('hi')
+
     const dispatch = useAppDispatch();
     const allWork = useAppSelector(state => state.workSlice.work);
     const [orientation, setOrientation] = useState(window.screen.orientation.type);
@@ -23,13 +27,14 @@ export const Work = () => {
         const gridId = (i % 2 === 0) ? "left-column video-item" : "right-column video-item";
         const {credits} = video;
         const pageOrientation = orientation.split("-").shift();
+        console.log(video.source)
         return (<div className={gridId}>
             <ReactPlayer
                 url={video.link}
                 className={pageOrientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"}
                 width="100%"
                 height="100%"
-                light={video.videoType === 'youtube' ? true : false}
+                light={video.source === 'youtube' ? true : false}
                 controls={true}
                 origin={window.location.origin}
             />

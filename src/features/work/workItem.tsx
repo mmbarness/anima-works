@@ -18,7 +18,7 @@ const WorkItem = ({video, orientation, i}: Props) => {
                 className={pageOrientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"}
                 width="100%"
                 height="100%"
-                light={video.videoType === 'youtube' ? true : false}
+                light={video.source === 'youtube' ? true : false}
                 controls={true}
                 origin={window.location.origin}
             />
