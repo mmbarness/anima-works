@@ -14,6 +14,26 @@ export interface workLink{
     "embedCode": ReactElement
 }
 
+export interface Video {
+    artist?: {name: string},
+    nonprofitInstitution?: {name: string},
+    company?: {name: string},
+    credits: credits[],
+    embedCode: string,
+    link: string,
+    source: string,
+    titleOfWork: string,
+    titleToDisplay: string,
+    videoType: string,
+    _id: string
+}
+
+export type credits = {
+    Name: string,
+    title: string,
+    link?: string
+}
+
 export interface portfolioInfoEle {
     "linkInfo": workLink
 }

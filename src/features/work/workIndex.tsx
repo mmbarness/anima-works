@@ -1,8 +1,11 @@
 import '../../styles/work.scss';
-import ReactPlayer from 'react-player/lazy'
+import ReactPlayer from 'react-player'
+import React, { Suspense } from 'react';
 import { fetchWorkAction } from './workSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { useEffect, useState } from 'react';
+import { Video } from '../../interfaces/assetTypes';
+const WorkItem  = React.lazy(() => import( './workItem'));
 
 //TODO - refactor video loading to enable lazy loading & switching between portrait and landscape
 
@@ -16,36 +19,11 @@ export const Work = () => {
         dispatch(fetchWorkAction());
     },[dispatch])
 
-    const renderReactPlayer = (video: Video) => ([
-        <ReactPlayer
-            url={video.link}
-            className="work-video-desktop"
-            width="100%"
-            height="100%"
-            light={video.videoType === 'youtube' ? true : false}
-            controls={true}
-            origin={window.location.origin}
-        />,
-        <ReactPlayer
-            url={video.link}
-            className="work-video-mobile"
-            width="100%"
-            height="100%"
-            light={video.videoType === 'youtube' ? true : false}
-            controls={true}
-            origin={window.location.origin}
-        />,
-        ]
-    )
-
     const renderLinks = (video: Video, i: number) => {
-        const [desktopPlayer, mobilePlayer] = renderReactPlayer(video);
         const gridId = (i % 2 === 0) ? "left-column video-item" : "right-column video-item";
         const {credits} = video;
         const pageOrientation = orientation.split("-").shift();
         return (<div className={gridId}>
-            {/* {desktopPlayer}
-            {mobilePlayer} */}
             <ReactPlayer
                 url={video.link}
                 className={pageOrientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"}
@@ -64,26 +42,6 @@ export const Work = () => {
         </div>)
     }
 
-    interface Video {
-        artist?: {name: string},
-        nonprofitInstitution?: {name: string},
-        company?: {name: string},
-        credits: credits[],
-        embedCode: string,
-        link: string,
-        source: string,
-        titleOfWork: string,
-        titleToDisplay: string,
-        videoType: string,
-        _id: string
-    }
-
-    type credits = {
-        Name: string,
-        title: string,
-        link?: string
-    }
-
     useEffect(() => {
         const adjustOrientation = () => {
             setOrientation(window.screen.orientation.type)
@@ -98,9 +56,12 @@ export const Work = () => {
     const renderWork = () => (
         allWork.map((video:Video, i:number) => 
             <div key={video._id}>
-                {renderLinks(video, i)}
+                <Suspense fallback={<div>Loading...</div>}>
+                    <WorkItem video={video} orientation={orientation} i={i}/>
+                </Suspense>
             </div>
-    ))
+        )
+    )
 
     return(
         <div id="work-container">
