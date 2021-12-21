@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css';
 import { About } from './features/about/about';
@@ -10,8 +10,17 @@ import { NavBar } from './pages/navBar';
 import { NavBarPortrait } from './pages/navBarPortrait';
 import { Footer } from './pages/footer';
 import './styles/app.scss'
+import { useAppDispatch, useAppSelector } from './redux/hooks';
+import { fetchInfo } from './features/about/aboutSlice';
 
 const App = () => {
+  
+  const dispatch = useAppDispatch();
+  const aboutInfo = useAppSelector(state => state.aboutSlice.aboutInfo);
+    
+  useEffect(() => {
+      if (!aboutInfo) dispatch(fetchInfo());
+  }, [dispatch]);
 
   return (
     <div className="App" id="app-container">
