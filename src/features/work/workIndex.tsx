@@ -7,13 +7,7 @@ import { useEffect, useState } from 'react';
 import { Video } from '../../interfaces/assetTypes';
 const WorkItem  = React.lazy(() => import( './workItem'));
 
-//TODO - refactor video loading to enable lazy loading & switching between portrait and landscape
-
 export const Work = () => {
-
-    // shouldComponentUpdate(nextProps, nextState) {}
-
-    console.log('hi')
 
     const dispatch = useAppDispatch();
     const allWork = useAppSelector(state => state.workSlice.work);
