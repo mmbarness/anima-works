@@ -20,7 +20,7 @@ const App = () => {
     
   useEffect(() => {
       if (!aboutInfo) dispatch(fetchInfo());
-  }, [dispatch]);
+  }, [dispatch, aboutInfo]);
 
   return (
     <div className="App" id="app-container">
