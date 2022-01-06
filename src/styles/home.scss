@@ -1,7 +1,27 @@
-#home-container{
-    width: 100%;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+@media (orientation: landscape){
+    #home-container{
+        width: 100%;
+        height: 60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #splash-video{
+        height: 35rem;
+        width: 40rem;
+    }
+}
+
+@media (orientation: portrait){
+    #home-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #splash-video{
+        height: 35rem;
+        width: 40rem;
+    }
 }

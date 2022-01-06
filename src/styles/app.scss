@@ -36,15 +36,14 @@ body{
 
 @media(orientation:portrait) {
     #app-container{
-        margin: 0rem 2rem;
         display: grid;
         grid-template-areas:
             "nav"
             "main"
             "footer";
         min-height: 80vh;
+        width: 90%;
         max-height: fit-content;
-        width: 80vw;
         grid-template-rows: auto;
         grid-template-columns: 100%;
         font-family: 'Lora', serif;

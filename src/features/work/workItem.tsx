@@ -21,7 +21,6 @@ const WorkItem = ({video, orientation, i}: Props) => {
                 light={true}
                 controls={true}
                 origin={window.location.origin}
-                id="home-page-reel"
             />
             <ul className="video-item-text-container">
                 <li className="video-item-text Title-li" key={`title-${video._id}`}>{video.titleToDisplay}</li>
