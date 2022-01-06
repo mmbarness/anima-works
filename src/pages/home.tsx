@@ -11,8 +11,8 @@ export const Home = () => {
                 url="https://vimeo.com/535616157"
                 className={orientation === 'landscape' ? "splash-desktop" : "splash-mobile"}
                 id="splash-video"
-                width="100vw"
-                height="auto"
+                width="100%"
+                height="100%"
                 // light={true}
                 controls={true}
                 origin={window.location.origin}
