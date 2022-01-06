@@ -1,13 +1,18 @@
 import '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 const sanityClient = require('@sanity/client')
+
 const today = new Date();
-const todaysUTCDate= `${today.getUTCFullYear()}-${today.getUTCMonth()}-${today.getUTCDate()}`
+const year = today.getFullYear();
+const month = today.getMonth().toString().length === 1 ? `0${today.getMonth()+1}` : today.getMonth();
+const day = today.getDate().toString().length === 1 ? `0${today.getDate()}` : today.getDate();
+
+let dateStr = `${year}-${month}-${day}`
 
 const client = sanityClient({
   projectId: 'uvsp04xk',
   dataset: 'production',
-  apiVersion: todaysUTCDate,
+  apiVersion: dateStr,
   useCdn: true,
 })
 
