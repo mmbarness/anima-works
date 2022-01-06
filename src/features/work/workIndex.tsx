@@ -10,7 +10,7 @@ export const Work = () => {
 
     const dispatch = useAppDispatch();
     const allWork = useAppSelector(state => state.workSlice.work);
-    const [orientation, setOrientation] = useState(window.screen.orientation.type);
+    const [orientation, setOrientation] = useState(window.matchMedia("(orientation: portrait)").matches ? 'portrait' : 'landscape');
     
     useEffect(() => {
         dispatch(fetchWorkAction());
@@ -30,17 +30,6 @@ export const Work = () => {
         ),
         [allWork, orientation],
     ) 
-
-    useEffect(() => {
-        const adjustOrientation = () => {
-            setOrientation(window.screen.orientation.type)
-        }
-        window.screen.orientation.addEventListener('change', adjustOrientation)
-        if (allWork) renderWork();
-        return () => {
-            window.removeEventListener('resize', adjustOrientation)
-        }
-    },[allWork, renderWork])
 
     return(
         <div id="work-container">
