@@ -33,7 +33,6 @@ export const Work = () => {
 
     return(
         <div id="work-container">
-            <p>VIDEO</p>
             <div id="video-container">
                 {renderWork()}
             </div>

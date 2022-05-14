@@ -14,14 +14,14 @@ export const NavBar = () => {
     }
 
     const toAbout = <Link to="/about" id={underlineMe("/about")}>About</Link>
-    const toHome = <Link to="/" id={underlineMe("/")}>Home</Link>
-    const toWork = <Link to="/work" id={underlineMe("/work")}>Work</Link>
+    const toWork = <Link to="/" id={underlineMe("/")}>Work</Link>
     const toGear = <Link to="/gear" id={underlineMe("/gear")}>Gear</Link>
     const toContact = <Link to="/contact"id={underlineMe("/contact")}>Contact</Link>
+    const toReel = <Link to="/reel" id={underlineMe("/reel")}>Reel</Link>
 
     const renderHomeLink = () => {
         if (pathname !== "/") {
-            return toHome
+            return toWork
         }
     }
 
@@ -33,6 +33,7 @@ export const NavBar = () => {
                 {toAbout}
                 {toGear}
                 {toContact}
+                {toReel}
             </div>
         </div>
     )

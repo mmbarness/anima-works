@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactPlayer from 'react-player';
 import '../styles/home.scss'
 
-export const Home = () => {
+export const Reel = () => {
 
     const [orientation, setOrientation] = useState(window.matchMedia("(orientation: portrait)").matches ? 'portrait' : 'landscape');
     return(
