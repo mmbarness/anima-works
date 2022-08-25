@@ -17,7 +17,7 @@ export const About = () => {
     const renderPage = () => {
         if (aboutSlice.LOADED) {
             const text = aboutSlice.info.aboutPageText[0].children[0].text
-            const imageUrl = sanityImager(aboutSlice.info.aboutPageImage).width(500).url()
+            const imageUrl = sanityImager(aboutSlice.info.aboutPageImage).url()
             return (
                 <div id="about-container">
                     <div id="about-img-container">
