@@ -34,8 +34,8 @@ export const About = () => {
     }
 
     return(
-        <div id="about-container">
+        <>
             {renderPage()}
-        </div>
+        </>
     )
 }

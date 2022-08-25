@@ -1,28 +1,29 @@
 @media (orientation: landscape) {
   #about-container{
-    display:flex;
-    flex-flow:row;
-    justify-content: space-between;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
     width: 70vw;
     margin: auto;
     padding: 1rem 0rem;
   }
 
   #about-block{
-      width: 60%
+    margin-top: 2vh;
+    width: 60%
   }
 
   #about-img-container {
-    width: 30%;
     height: auto;
     overflow: hidden;
   }
   
   #about-container img {
     max-width: 100%;
-    height: auto;
+    max-height: 40vh;
+    min-height: 35vh;
     display: block;
-    border-radius: .25em;
+    border-radius: 0.25em;
   }
 }
 
@@ -35,10 +36,6 @@
     width: 70vw;
     margin: auto;
     padding: 1rem 0rem;
-  }
-
-  #about-block{
-      // width: 60%
   }
 
   #about-img-container {
