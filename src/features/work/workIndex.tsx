@@ -11,26 +11,28 @@ export const Work = () => {
     
     const { data } = useWorkItemsQuery(); 
 
-    const renderWork = useCallback(
+    // const renderItems = 
+
+    const renderItems = useCallback(
         () => (
             data ? 
-            data.map((video:WorkItem, i:number) => 
-                video.thumbnail ? 
-                <Suspense fallback={<div key={video._id}> </div>}>
-                    <LazyWorkItem video={video} orientation={orientation} i={i}/>
-                </Suspense>
-                : null
-            )
-            : 'loading'
+                <div id="video-container">
+                    { data.map((video:WorkItem, i:number) => 
+                        video.thumbnail ? 
+                        <Suspense key={video._id} fallback={<div key={video._id}> </div>}>
+                            <LazyWorkItem key={video._id} video={video} orientation={orientation} i={i}/>
+                        </Suspense>
+                        : null
+                    ) }
+                </div>
+            : <div id="work-index-loading-div">loading...</div>
         ),
         [data, orientation],
     ) 
 
     return(
         <div id="work-container">
-            <div id="video-container">
-                {renderWork()}
-            </div>
+            {renderItems()}
         </div>
     )
 }
