@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import aboutSlice from '../features/about/aboutSlice';
 import gearSlice from '../features/gear/gearSlice';
-import workSlice from '../features/work/workSlice';
+import { sanityApi } from './sanityApi';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -14,11 +14,13 @@ export const store = configureStore({
         // Ignore these paths in the state
         ignoredPaths: ['students', 'studentsSlice.students'],
       },
-    }),
+    }).concat(
+        sanityApi.middleware
+    ),
   reducer: {
     aboutSlice,
     gearSlice,
-    workSlice
+    [sanityApi.reducerPath]: sanityApi.reducer,
   },
 });
 

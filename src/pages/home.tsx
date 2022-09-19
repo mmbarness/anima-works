@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import ReactPlayer from 'react-player';
+import {default as _ReactPlayer} from 'react-player';
+import {ReactPlayerProps} from "react-player/types/lib";
 import '../styles/home.scss'
+const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
 export const Home = () => {
 

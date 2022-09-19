@@ -1,0 +1,2 @@
+export const WORK_ITEM_STILLS__WIDTH = 500;
+export const WORK_ITEM_THUMBNAIL_WIDTH = 1000;

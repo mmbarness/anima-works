@@ -1,5 +1,12 @@
-export interface allWork{
-    
+import { credits } from "./assetTypes";
+
+export type SanityImage = {
+    _type: "image";
+    asset: {
+        _ref: string;
+        _type: string;
+    }
+    alt?: string, 
 }
 
 // _id(pin):"0dc666bf-8115-4399-b969-bbf0e3fe4369"
@@ -11,7 +18,7 @@ export interface allWork{
 // titleToDisplay(pin):"Show Me The Body - Arcanum"
 // videoType(pin):"musicVideo"
 
-export interface WorkItem{
+export interface WorkItem {
     _id: string,
     artist?: {name: string},
     nonprofitInstitution?: {name: string},
@@ -19,11 +26,14 @@ export interface WorkItem{
     embedCode: string,
     link: string, 
     source: string,
+    thumbnail: string | null,
+    stills: Array<string> | null,
     titleOfWork: string,
     titleToDisplay: string,
     videoType:"musicVideo"|"nonprofit"|"commercial",
-    credits: Array<object>,
+    credits: Array<credits>,
 }
+
 // artist: {_ref: '791326a1-4654-4b6b-9214-8292da8b9cef', _type: 'reference'}
 // credits: {director: 'Landon Yost', directorOfPhotography: 'Andrea Gavazzi', post: 'Matt Schaff', production: 'ANIMA Works'}
 // embedCode: "<iframe width=\"640\" height=\"378\" src=\"https://www.youtube.com/embed/B15q6Uz6inY\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
@@ -85,3 +95,49 @@ export interface GearItem {
 // _rev: "5HHceZ3LuAltt4AEK1Z5DF"
 // _type: "gear"
 // _updatedAt: "2021-12-18T21:46:22Z"
+
+export type BlockContent = {
+    _key: string;
+    _type: string;
+    marks? : Array<String>;
+    text?: string;
+    level?: number,
+    listItem?: string,
+    markDefs?: Array<String>,
+    style?: string
+}
+
+export interface CoreResponse  {
+    _createdAt: string,
+    _id: string,
+    _rev: string,
+    _type: string,
+    _updatedAt: string,
+}
+
+export type Slug = {
+    _type: "slug";
+    current: string;
+}
+
+export type Query = {
+    ms: number;
+    query: string;
+}
+
+export interface Link {
+    _key: string;
+    _type: string;
+    link: string;
+    title: string;
+    displayText: string;
+}
+
+interface NaiveWorkItem extends Omit<WorkItem, "thumbnail" | "stills">{
+    thumbnail: SanityImage,
+    stills: Array<SanityImage>
+}
+
+export interface WorkItemQuery extends Query {
+    result: Array<NaiveWorkItem>
+}
