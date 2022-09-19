@@ -12,7 +12,7 @@ type Props = {
     i: number
 }
 
-const style = {
+const desktopStyle = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
@@ -25,6 +25,20 @@ const style = {
         outline: "none"
     }
 };
+
+const mobileStyle = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: '#f5f5f5',
+    boxShadow: 24,
+    borderRadius: 1,
+    p: 1,
+    "&:focus": {
+        outline: "none"
+    }
+}
 
 const clickMe = (link: string | null) => 
     match(link)
@@ -56,7 +70,7 @@ const WorkItem = ({video, orientation, i}: Props) => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Box sx={style}>
+            <Box sx={desktopStyle}>
                 <div id="modal-video-container">
                     <ReactPlayer
                         url={video.link}

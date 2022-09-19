@@ -56,25 +56,19 @@
     .work-video-desktop{
         display: none;
     }
-    .work-video-mobile{
-        min-height: 20vh;
-        min-width: 80vw;
-    }
+
     .video-item{
-        display: grid;
-        grid-template-rows: 60% 40%;
+        > img {
+            border-radius: .15rem;
+            width: 100%
+        }
     }
     .video-item-text-container{
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: 50% 50%;
         list-style-type: none;
-        align-items: flex-start;
         font-weight: 400;
         font-style: italic;
         letter-spacing: .01em;
         padding-left: 0px;
-        margin: .5em 0em 3em 0em;
         .Title-li{
             grid-column-start: 1;
             grid-column-end: 3;
@@ -84,6 +78,11 @@
         li{
             font-size: calc((2 - 1) * 1vw + .5em);
         }
+    }
+
+    #modal-video-container {
+        width: 85vw;
+        height: 30vh;
     }
 }
 
