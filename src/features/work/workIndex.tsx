@@ -11,8 +11,6 @@ export const Work = () => {
     
     const { data } = useWorkItemsQuery(); 
 
-    console.log(data)
-
     const renderWork = useCallback(
         () => (
             data ? 

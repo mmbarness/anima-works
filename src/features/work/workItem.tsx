@@ -1,31 +1,10 @@
 import type { WorkItem as WorkItemAsset } from "../../interfaces/sanityTypes"
 import {default as _ReactPlayer} from 'react-player';
 import {ReactPlayerProps} from "react-player/types/lib";
-import { CardMedia, Modal, Box } from '@mui/material';
-import { match, P } from "ts-pattern";
+import { Modal, Box } from '@mui/material';
 import { useState } from "react";
-import YouTubePlayer from "react-player/youtube";
+import { match, P } from "ts-pattern";
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
-
-const renderVideo = (video:WorkItemAsset, pageOrientation:string) => 
-    match(video.link)
-        .with(P.string, () => (
-            <ReactPlayer
-                url={video.link}
-                className={pageOrientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"}
-                width="100%"
-                height="100%"
-                light={video.thumbnail ? video.thumbnail : true}
-                controls={true}
-                origin={window.location.origin}
-            />
-        ))
-        .with(P._, () =>
-            <div className="thumbnail-preview">
-                <img src={video.thumbnail}></img>
-            </div>
-        )
-        .run()
 
 type Props = {
     video: WorkItemAsset,
@@ -40,41 +19,45 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 1000,
     height: 500,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: '#f5f5f5',
     boxShadow: 24,
-    p: 4,
-  };
+    borderRadius: 1,
+    p: 1,
+    "&:focus": {
+        outline: "none"
+    }
+};
+
+const imgClasses = (params: {orientation:string, link:string | null}) => 
+    match(params)
+        .with({
+            orientation: "landscape",
+            link: P.string
+        }, landscapeModal => "work-video-desktop click-me")
+        .with({
+            orientation: "landscape",
+            link: P._
+        }, landscapeThumbnail => "work-video-destop dont-click-me")
+        .with({
+            orientation: P.string,
+            link: P.string
+        }, landscapeModal => "work-video-mobile click-me")
+        .with({
+            orientation: P.string,
+            link: P._
+        }, landscapeModal => "work-video-mobile dont-click-me")
+        .run()
 
 const WorkItem = ({video, orientation, i}: Props) => {
     const gridId = (i % 2 === 0) ? "left-column video-item" : "right-column video-item";
     const {credits} = video;
     const pageOrientation = orientation.split("-").shift();
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    console.log(video.link)
-
-    // const youtubeMatch = match(video.link)
-    //     .with(P.string, link => link.match(/\?v=([A-Za-z0-9-_]*)/))
-    //     .with(P._, link => [])
-    //     .run()
-
-    // console.log(video.link.match(/\?v=([A-Za-z0-9-_]*)/))
-
-    const youtubeId = video.link ? match(video.link.match(/\?v=([A-Za-z0-9-_]*)/))
-        .with(P.array(P.string), (regexMatches) => regexMatches)
-        .with(P._, (matches) => {
-            console.log({matches})
-            return null 
-        })
-        : null 
-
-    console.log({link: video.link, youtubeId})
-
+    
     return(
         <div className={gridId} key={video._id}>
-            <img onClick={(e) => video.link ? setOpen(true) : null} className={pageOrientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"} src={video.thumbnail}></img>
+            <img onClick={(e) => video.link ? setOpen(true) : null} className={imgClasses({orientation, link: video.link})} src={video.thumbnail}></img>
             <Modal
                 open={open}
                 onClose={handleClose}

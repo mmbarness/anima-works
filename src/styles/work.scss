@@ -104,5 +104,8 @@
         color:#52a376;
         font-size: calc((2 - 1) * 1vw + 1rem);
     }
+    .click-me:hover{
+        cursor: pointer;
+    }
 }
 
