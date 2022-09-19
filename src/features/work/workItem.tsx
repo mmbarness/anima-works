@@ -17,8 +17,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 1000,
-    height: 500,
+    // width: 1000,
+    // height: 750,
     bgcolor: '#f5f5f5',
     boxShadow: 24,
     borderRadius: 1,
@@ -61,15 +61,23 @@ const WorkItem = ({video, orientation, i}: Props) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <ReactPlayer
-                        url={video.link}
-                        className={pageOrientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"}
-                        width="100%"
-                        height="100%"
-                        light={video.thumbnail ? video.thumbnail : true}
-                        controls={true}
-                        origin={window.location.origin}
-                    />
+                    <div id="modal-video-container">
+                        <ReactPlayer
+                            url={video.link}
+                            className={pageOrientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"}
+                            width="100%"
+                            height="100%"
+                            light={video.thumbnail ? video.thumbnail : true}
+                            controls={true}
+                            origin={window.location.origin}
+                        />
+                    </div>
+                    <ul className="video-item-text-container">
+                        <li className="video-item-text Title-li" key={`title-${video._id}`}>{video.titleToDisplay}</li>
+                        {credits.map((credit) => (
+                            <li key={`${credit.title}-${video._id}`} className={`video-item-text ${credit.title}-li`}>{credit.title}: {credit.Name}</li>
+                        ))}
+                    </ul>
                 </Box>
             </Modal>
         </div>
