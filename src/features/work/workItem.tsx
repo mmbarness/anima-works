@@ -28,25 +28,21 @@ const style = {
     }
 };
 
-const imgClasses = (params: {orientation:string, link:string | null}) => 
-    match(params)
-        .with({
-            orientation: "landscape",
-            link: P.string
-        }, landscapeModal => "work-video-desktop click-me")
-        .with({
-            orientation: "landscape",
-            link: P._
-        }, landscapeThumbnail => "work-video-destop dont-click-me")
-        .with({
-            orientation: P.string,
-            link: P.string
-        }, landscapeModal => "work-video-mobile click-me")
-        .with({
-            orientation: P.string,
-            link: P._
-        }, landscapeModal => "work-video-mobile dont-click-me")
+const clickMe = (link: string | null) => 
+    match(link)
+        .with(P.string, () => "click-me")
+        .with(P._, () => "dont-click-me")
+        .run();
+
+const desktopOrMobile = (orientation:string) =>
+    match(orientation)
+        .with("portrait", () => "work-video-mobile")
+        .with("landscape", () => "work-video-desktop")
+        .with(P._, () => "work-video-desktop")
         .run()
+
+const thumbnailClasses = (params: {orientation:string, link:string | null}) => 
+    desktopOrMobile(params.orientation) + " " + clickMe(params.link)
 
 const WorkItem = ({video, orientation, i}: Props) => {
     const gridId = (i % 2 === 0) ? "left-column video-item" : "right-column video-item";
@@ -57,7 +53,7 @@ const WorkItem = ({video, orientation, i}: Props) => {
     
     return(
         <div className={gridId} key={video._id}>
-            <img onClick={(e) => video.link ? setOpen(true) : null} className={imgClasses({orientation, link: video.link})} src={video.thumbnail}></img>
+            <img onClick={(e) => video.link ? setOpen(true) : null} className={thumbnailClasses({orientation, link: video.link})} src={video.thumbnail}></img>
             <Modal
                 open={open}
                 onClose={handleClose}
