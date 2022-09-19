@@ -1,11 +1,9 @@
 @media (orientation: landscape){
     #video-container{
         display: grid;
-        grid-template-areas:
-            "left-column"
-            "right-column";
-        grid-template-columns: 50% 50%;
-        grid-template-rows: auto;
+        // grid-template-areas: auto auto auto;
+        grid-template-columns: 33% 33% 33%;
+        // grid-template-rows: auto;
         width: 90vw;
     }
     .video-item{
@@ -13,7 +11,7 @@
         display: flex;
         flex-flow: column;
         justify-content: start;
-        margin: .25vw 0vh .25vh 0vh;
+        margin: .25vh 0.25vw .25vh 0.25vw;
         > img {
             border-radius: .15rem;
         }
@@ -45,15 +43,6 @@
         li{
             margin: 5px 0;
         }
-    }
-    .left-column{
-        grid-area: "left-column";
-        padding-right: .5rem;
-    }
-
-    .right-column{
-        grid-area: "right-column";
-        padding-left: .5rem;
     }
 }
 

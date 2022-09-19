@@ -45,14 +45,14 @@ const thumbnailClasses = (params: {orientation:string, link:string | null}) =>
     desktopOrMobile(params.orientation) + " " + clickMe(params.link)
 
 const WorkItem = ({video, orientation, i}: Props) => {
-    const gridId = (i % 2 === 0) ? "left-column video-item" : "right-column video-item";
+           
     const {credits} = video;
     const pageOrientation = orientation.split("-").shift();
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
     
     return(
-        <div className={gridId} key={video._id}>
+        <div className="video-item" key={video._id}>
             <img onClick={(e) => video.link ? setOpen(true) : null} className={thumbnailClasses({orientation, link: video.link})} src={video.thumbnail}></img>
             <Modal
                 open={open}
