@@ -12,7 +12,7 @@ type Props = {
     i: number
 }
 
-const desktopStyle = {
+const modalStyle = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
@@ -25,20 +25,6 @@ const desktopStyle = {
         outline: "none"
     }
 };
-
-const mobileStyle = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: '#f5f5f5',
-    boxShadow: 24,
-    borderRadius: 1,
-    p: 1,
-    "&:focus": {
-        outline: "none"
-    }
-}
 
 const clickMe = (link: string | null) => 
     match(link)
@@ -59,7 +45,7 @@ const thumbnailClasses = (params: {orientation:string, link:string | null}) =>
 const WorkItem = ({video, orientation, i}: Props) => {
            
     const {credits} = video;
-    const pageOrientation = orientation.split("-").shift();
+
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
 
@@ -70,11 +56,11 @@ const WorkItem = ({video, orientation, i}: Props) => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Box sx={desktopStyle}>
+            <Box sx={modalStyle}>
                 <div id="modal-video-container">
                     <ReactPlayer
                         url={video.link}
-                        className={pageOrientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"}
+                        className={orientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"}
                         width="100%"
                         height="100%"
                         light={video.thumbnail ? video.thumbnail : true}
