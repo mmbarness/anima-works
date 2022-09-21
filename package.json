@@ -6,6 +6,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.5",
+    "@portabletext/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.7.1",
     "@sanity/client": "^2.23.2",
     "@sanity/image-url": "^1.0.1",
@@ -37,13 +38,18 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:tsc": "tsc -p tsconfig.test.json -w",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "resolutions": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2"
   },
   "browserslist": {
     "production": [

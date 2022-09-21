@@ -8,7 +8,7 @@ const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
 type Props = {
     video: WorkItemAsset,
-    orientation: string,
+    orientation: "landscape" | "portrait",
     i: number
 }
 
@@ -32,14 +32,14 @@ const clickMe = (link: string | null) =>
         .with(P._, () => "dont-click-me")
         .run();
 
-const desktopOrMobile = (orientation:string) =>
+const desktopOrMobile = (orientation:"landscape" | "portrait") =>
     match(orientation)
         .with("portrait", () => "work-video-mobile")
         .with("landscape", () => "work-video-desktop")
         .with(P._, () => "work-video-desktop")
         .run()
 
-const thumbnailClasses = (params: {orientation:string, link:string | null}) => 
+const thumbnailClasses = (params: {orientation:"landscape" | "portrait", link:string | null}) => 
     desktopOrMobile(params.orientation) + " " + clickMe(params.link)
 
 const WorkItem = ({video, orientation, i}: Props) => {
