@@ -1,6 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import contextSlice from '../contextSlice';
-import aboutSlice from '../features/about/aboutSlice';
 import { sanityApi } from './sanityApi';
 
 export const store = configureStore({
@@ -13,7 +12,6 @@ export const store = configureStore({
         sanityApi.middleware
     ),
   reducer: {
-    aboutSlice,
     [sanityApi.reducerPath]: sanityApi.reducer,
     contextSlice: contextSlice.reducer,
   },
