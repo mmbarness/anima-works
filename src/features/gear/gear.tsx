@@ -8,17 +8,16 @@ import { fetchGearAction } from "./gearSlice";
 export const Gear = () => {
 
     const dispatch = useAppDispatch();
-    const {gear, LOADED} = useAppSelector(state => state.gearSlice);
 
-    const { data } = useGearQuery();
+    const { data, isSuccess } = useGearQuery();
 
     useEffect(() => {
         dispatch(fetchGearAction());
     },[dispatch])
 
     const renderGear = () => {
-        if (LOADED) {
-            return gear.map((cameraPackage:singlePackage) => (
+        if (isSuccess) {
+            return data.map((cameraPackage:singlePackage) => (
                 <ul key={`package-ul-${cameraPackage._id}`}className="camera-package">
                     <h3 className="camera-package-title">
                         {cameraPackage.name}
