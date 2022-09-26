@@ -12,14 +12,14 @@ export const routesObj = [
         element: <Work />
     },
     { 
-        path: "/gear", 
-        pathName: "Gear",
-        element: <Gear /> 
-    },
-    { 
         path: "/reel", 
         pathName: "Reel",
         element: <Reel /> 
+    },
+    { 
+        path: "/gear", 
+        pathName: "Gear",
+        element: <Gear /> 
     },
     { 
         path: "/about", 
