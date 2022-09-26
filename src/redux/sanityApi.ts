@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import imageUrlBuilder from '@sanity/image-url';
 import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import { match, P } from 'ts-pattern';
-import { AboutInfo, FormattedAboutInfo, GearItem, aboutPageMatchPattern, SanityImage, WorkItem, WorkItemQuery, HomePageQuery, HomePage, HomePageMatchPattern } from '../interfaces/sanityTypes';
+import { AboutInfo, FormattedAboutInfo, GearItem, aboutPageMatchPattern, SanityImage, WorkItem, HomePage, HomePageMatchPattern, QueryResponse, HomePageQuery, NaiveWorkItem } from '../interfaces/sanityTypes';
 import { WORK_ITEM_STILLS__WIDTH, WORK_ITEM_THUMBNAIL_WIDTH } from '../utils/constants';
 const sanityClient = require('@sanity/client')
 const baseURL = 'https://uvsp04xk.api.sanity.io/v2022-10-21/data/query/production';
@@ -14,8 +14,6 @@ export const baseSanityClient = sanityClient({
     apiVersion: '2022-10-21',
     token: '',
 })
-
-type AboutInfoQuery = {ms: number, query: string, result: Array<AboutInfo>}
 
 const imageBuilder = imageUrlBuilder(baseSanityClient);
 
@@ -47,7 +45,7 @@ export const sanityApi = createApi({
                   company->{name},
                 }
             }`,
-            transformResponse: (response: WorkItemQuery) => response.result.map(workItem => ({
+            transformResponse: (response: QueryResponse<NaiveWorkItem>) => response.result.map(workItem => ({
                 ...workItem,
                 stills: match(workItem.stills)
                     .with(P.array({
@@ -66,7 +64,7 @@ export const sanityApi = createApi({
         }),
         aboutInfo: builder.query<FormattedAboutInfo, void>({
             query: () => '?query=*[_type == "info"]',
-            transformResponse: (response: AboutInfoQuery) => {
+            transformResponse: (response: QueryResponse<AboutInfo>) => {
                 const [text, images] = response.result.map(result => 
                     match(result)
                         .with({
@@ -99,14 +97,13 @@ export const sanityApi = createApi({
         }),
         gear: builder.query<Array<GearItem>, void>({
             query: () => '?query=*[_type == "gear"]{_id, name, features}',
-            transformResponse: (response: any) => {
-                console.log(response)
-                return response;
+            transformResponse: (response: QueryResponse<GearItem>) => {
+                return response.result;
             }
         }),
         homePage: builder.query<HomePage, void>({
             query: () => '?query=*[_type == "homePage"]',
-            transformResponse: (response: HomePageQuery) => (
+            transformResponse: (response: QueryResponse<HomePageQuery>) => (
                 match(response.result[0])
                     .with(HomePageMatchPattern, response => ({reelLink: response.reelLink}))
                     .with(P._, response => ({reelLink: ""}))

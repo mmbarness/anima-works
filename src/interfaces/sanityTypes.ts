@@ -1,5 +1,4 @@
 import { P } from "ts-pattern";
-import { Home } from "../pages/home";
 import { credits } from "./assetTypes";
 
 export type SanityImage = {
@@ -132,21 +131,17 @@ export interface Link {
     displayText: string;
 }
 
-interface NaiveWorkItem extends Omit<WorkItem, "thumbnail" | "stills">{
+export interface NaiveWorkItem extends Omit<WorkItem, "thumbnail" | "stills">{
     thumbnail: SanityImage,
     stills: Array<SanityImage>
-}
-
-export interface WorkItemQuery extends Query {
-    result: Array<NaiveWorkItem>
 }
 
 export interface HomePage {
     reelLink: string
 }
 
-type HomePageResponse = CoreResponse & HomePage
+export type HomePageQuery = CoreResponse & HomePage
 
-export interface HomePageQuery extends Query {
-    result: Array<HomePageResponse>
+export interface QueryResponse<ResultType> extends Query {
+    result: Array<ResultType>
 }
