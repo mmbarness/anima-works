@@ -1,7 +1,7 @@
 import './App.css';
 import { About } from './features/about/about';
-import { NavBar } from './pages/navBar';
-import { Footer } from './pages/footer';
+import { NavBar } from './pages/NavBar';
+import { Footer } from './pages/Footer';
 import './styles/app.scss'
 import { useLazyAboutInfoQuery } from './redux/sanityApi';
 import { useEffect } from 'react';

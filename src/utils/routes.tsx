@@ -2,8 +2,8 @@ import { useRoutes } from "react-router-dom";
 import { About } from "../features/about/about";
 import { Gear } from "../features/gear/gear";
 import { Work } from "../features/work/workIndex";
-import { Contact } from "../pages/contact";
-import { Home } from "../pages/home";
+import { Contact } from "../pages/Contact";
+import { Reel } from "../pages/Reel";
 
 export const routesObj = [
     {
@@ -19,7 +19,7 @@ export const routesObj = [
     { 
         path: "/reel", 
         pathName: "Reel",
-        element: <Home /> 
+        element: <Reel /> 
     },
     { 
         path: "/about", 

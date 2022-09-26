@@ -7,7 +7,7 @@ import { useHomePageQuery } from '../redux/sanityApi';
 import '../styles/home.scss'
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
-export const Home = () => {
+export const Reel = () => {
 
     const { data, isSuccess, isError } = useHomePageQuery();
 
