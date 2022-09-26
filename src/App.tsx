@@ -13,6 +13,7 @@ import { useLocation } from 'react-router-dom';
 const App = () => {
 
     const location = useLocation();
+    console.log({location})
     
     const [ triggerAbout ] = useLazyAboutInfoQuery()
 

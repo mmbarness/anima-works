@@ -1,3 +1,16 @@
+#navBar-links {
+    color:#52a376;
+    a:visited {
+        color:#52a376;
+    }
+    .underline-me{
+        text-decoration-line: underline;
+    }
+    .dont-underline-me{
+        text-decoration-line: none;
+    }
+}
+
 @media (orientation:portrait){
     #navBar-landscape{
         display: none;
@@ -15,17 +28,11 @@
             justify-content: space-between;
             margin: 0px 5px
         }
-        p{
+        div {
             margin: .5rem 0rem;
             font-size: 1.25rem;
         }
-        p a{
-            color:#52a376;
-            text-decoration: none;
-        }
-        a:visited {
-            color:#52a376;
-        }
+
     }
 
 }
@@ -46,20 +53,9 @@
             width: 30%;
             margin: 0px 5px
         }
-        p a{
-            color:#52a376;
-            text-decoration: none;
-        }
-        a:visited {
-            color:#52a376;
-        }
     }
 }
 
-
-#underline-me{
-    text-decoration: underline;
-}
 
 @media screen and (min-width: 0px) and (max-width:1499px) and (orientation: landscape){
     #navBar-landscape p {

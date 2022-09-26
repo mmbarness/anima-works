@@ -24,11 +24,11 @@ export const NavBar = () => {
 
     return(
         <div id={ currentOrientation === "landscape" ? "navBar-landscape" : "navBar-portrait" }>
-            <p>
+            <div>
                 <Link to="/" id={underlineMe("/")}>
                     <img style={ {"width": "15vh" }} src={imageUrl} alt="company logo" id="company-logo"/>
                 </Link>
-            </p>
+            </div>
             <div id="navBar-links">
                 { navbarLinks(pathname) }
             </div>

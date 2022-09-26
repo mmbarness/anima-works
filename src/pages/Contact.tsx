@@ -1,11 +1,14 @@
 import '../styles/contact.scss'
 import { useMiscellaneousQuery } from '../redux/sanityApi';
 import { match, P } from 'ts-pattern';
+import { useAppSelector } from '../redux/hooks';
 //p sure emailjs lacks typings, so this file is jsx
 
 export const Contact = () => {
     
     const { data, isSuccess } = useMiscellaneousQuery();
+
+    const { currentOrientation } = useAppSelector(state => state.contextSlice)
 
     const instagramSVG = (ig:string) => match(ig)
         .with("do not render", () => (
@@ -22,7 +25,7 @@ export const Contact = () => {
 
     return( 
         isSuccess ?
-        <div id="contact">
+        <div id={`contact-${currentOrientation}`}>
             <p id="contact-page-email">{data.companyEmail}</p>
             {instagramSVG(data.companyInstagram)}
         </div>
