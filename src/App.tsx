@@ -1,10 +1,5 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import { About } from './features/about/about';
-import { Contact } from './pages/contact';
-import { Gear } from './features/gear/gear';
-import { Home } from './pages/home';
-import { Work } from './features/work/workIndex';
 import { NavBar } from './pages/navBar';
 import { Footer } from './pages/footer';
 import './styles/app.scss'
@@ -13,6 +8,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import useMediaQuery from './useMediaQuery';
 import contextSlice from './contextSlice';
+import {Routes} from './utils/routes';
 
 const App = () => {
     
@@ -36,17 +32,11 @@ const App = () => {
 
     return (
         <div className="App" id="app-container">
-        <Router>
-            <NavBar/>
-            <div id="main-navigation">
-                <Route exact path ="/" component={Work}/>
-                <Route path ="/about" component={About}/>
-                <Route path ="/contact" component={Contact}/>
-                <Route path = "/gear" component={Gear}/>
-                <Route path = "/reel" component={Home}/>
-            </div>
-            <Footer/>
-        </Router>
+        <NavBar/>
+        <div id="main-navigation">
+            { Routes() }
+        </div>
+        <Footer/>
         </div>
     );
 }
