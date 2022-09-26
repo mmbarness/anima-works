@@ -6,7 +6,6 @@ import { Gear } from './features/gear/gear';
 import { Home } from './pages/home';
 import { Work } from './features/work/workIndex';
 import { NavBar } from './pages/navBar';
-import { NavBarPortrait } from './pages/navBarPortrait';
 import { Footer } from './pages/footer';
 import './styles/app.scss'
 import { useLazyAboutInfoQuery } from './redux/sanityApi';
@@ -38,14 +37,13 @@ const App = () => {
     return (
         <div className="App" id="app-container">
         <Router>
-            <NavBarPortrait/>
             <NavBar/>
             <div id="main-navigation">
-                <Route exact path ="/" component={Home}/>
+                <Route exact path ="/" component={Work}/>
                 <Route path ="/about" component={About}/>
                 <Route path ="/contact" component={Contact}/>
                 <Route path = "/gear" component={Gear}/>
-                <Route path = "/work" component={Work}/>
+                <Route path = "/reel" component={Home}/>
             </div>
             <Footer/>
         </Router>
