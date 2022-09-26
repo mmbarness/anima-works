@@ -98,7 +98,11 @@ export const sanityApi = createApi({
             }
         }),
         gear: builder.query<Array<GearItem>, void>({
-            query: () => '?query=*[_type == "gear"]{_id, name, features}'
+            query: () => '?query=*[_type == "gear"]{_id, name, features}',
+            transformResponse: (response: any) => {
+                console.log(response)
+                return response;
+            }
         }),
         homePage: builder.query<HomePage, void>({
             query: () => '?query=*[_type == "homePage"]',

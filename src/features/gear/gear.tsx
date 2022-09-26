@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { singlePackage } from "../../interfaces/assetTypes"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useGearQuery } from "../../redux/sanityApi";
 import '../../styles/gear.scss';
 import { fetchGearAction } from "./gearSlice";
 
@@ -8,6 +9,8 @@ export const Gear = () => {
 
     const dispatch = useAppDispatch();
     const {gear, LOADED} = useAppSelector(state => state.gearSlice);
+
+    const { data } = useGearQuery();
 
     useEffect(() => {
         dispatch(fetchGearAction());

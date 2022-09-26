@@ -64,6 +64,12 @@ export const aboutPageMatchPattern = {
     }),
 }
 
+export const GearItemPattern = {
+    "_id": P.string,
+    "name": P.string,
+    "features": P.array(P.string)
+}
+
 export interface AboutInfo extends CoreResponse{
     aboutPageImage: object,
     aboutPageText: Array<BlockContent>,
