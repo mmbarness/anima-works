@@ -9,7 +9,7 @@ const underlineMe = (linkPath:string, pathname:string) => {
     }
 }
 
-export default function (pathname: string) {
+export default function navbarLinks (pathname: string) {
     return routesObj.filter(route => route.path !== "/").map((route, index) => {
         return (
             <Link 

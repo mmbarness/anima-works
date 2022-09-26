@@ -3,13 +3,13 @@ import {default as _ReactPlayer} from 'react-player';
 import {ReactPlayerProps} from "react-player/types/lib";
 import { match } from 'ts-pattern';
 import { useAppSelector } from '../redux/hooks';
-import { useHomePageQuery } from '../redux/sanityApi';
+import { useReelPageQuery } from '../redux/sanityApi';
 import '../styles/home.scss'
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
 export const Reel = () => {
 
-    const { data, isSuccess, isError } = useHomePageQuery();
+    const { data, isSuccess, isError } = useReelPageQuery();
 
     const { currentOrientation } = useAppSelector(state => state.contextSlice)
 

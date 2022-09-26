@@ -1,26 +1,31 @@
 import './App.css';
-import { About } from './features/about/about';
 import { NavBar } from './pages/NavBar';
 import { Footer } from './pages/Footer';
 import './styles/app.scss'
-import { useLazyAboutInfoQuery } from './redux/sanityApi';
+import { useLazyAboutInfoQuery, useLazyMiscellaneousQuery } from './redux/sanityApi';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import useMediaQuery from './useMediaQuery';
 import contextSlice from './contextSlice';
 import {Routes} from './utils/routes';
+import { useLocation } from 'react-router-dom';
 
 const App = () => {
+
+    const location = useLocation();
     
-    const [ trigger, lastArg ] = useLazyAboutInfoQuery()
+    const [ triggerAbout ] = useLazyAboutInfoQuery()
+
+    const [ triggerMisc ] = useLazyMiscellaneousQuery() 
 
     const dispatch = useAppDispatch(); 
 
     const { currentOrientation } = useAppSelector(state => state.contextSlice)
 
     useEffect(() => {
-        trigger()
-    }, [ About ])
+        triggerAbout()
+        triggerMisc()
+    }, [ triggerAbout, triggerMisc ])
 
     const newOrientation = useMediaQuery("(orientation: landscape)") ? "landscape" : "portrait";
 
@@ -28,7 +33,7 @@ const App = () => {
         if (newOrientation !== currentOrientation) {
             dispatch(contextSlice.actions.setOrientation(newOrientation));
         }
-    }, [newOrientation])
+    }, [currentOrientation, dispatch, newOrientation])
 
     return (
         <div className="App" id="app-container">
@@ -36,7 +41,10 @@ const App = () => {
         <div id="main-navigation">
             { Routes() }
         </div>
-        <Footer/>
+        { location.pathname !== "/contact" ? 
+            <Footer/>
+        : null 
+        }
         </div>
     );
 }

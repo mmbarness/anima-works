@@ -2,7 +2,7 @@ import { P } from "ts-pattern";
 import { credits } from "./assetTypes";
 
 export type SanityImage = {
-    _type: "image";
+    _type: string;
     asset: {
         _ref: string;
         _type: string;
@@ -26,6 +26,15 @@ export interface WorkItem {
     credits: Array<credits>,
 }
 
+export const ImagePattern = {
+    "_type": P.string,
+    "asset": {
+        "_ref": P.string,
+        "_type": P.string,
+    },
+    "alt": P.optional(P.string),
+}
+
 export const coreSanityResultPattern = {
     "_createdAt": P.string,
     "_id": P.string,
@@ -40,20 +49,10 @@ export const HomePageMatchPattern = {
 }
 
 export const aboutPageMatchPattern = {
-    "_createdAt": P.string,
-    "_id": P.string,
-    "_rev": P.string,
-    "_type": P.string,
-    "_updatedAt": P.string,
+    ...coreSanityResultPattern,
     "email": P.string,
     "instagram": P.string,
-    "aboutPageImage": {
-        "_type": P.string,
-        "asset": {
-            "_ref": P.string,
-            "_type": P.string,
-        }
-    },
+    "aboutPageImage": ImagePattern,
     "aboutPageText": P.array({
         "_key": P.string,
         "type": P.string,
@@ -68,6 +67,14 @@ export const GearItemPattern = {
     "name": P.string,
     "features": P.array(P.string)
 }
+
+export const MiscellaneousPattern = {
+    ...coreSanityResultPattern,
+    "companyEmail": P.string,
+    "companyInstagram": P.string,
+    "companyLogo": ImagePattern,
+}
+
 
 export interface AboutInfo extends CoreResponse{
     aboutPageImage: object,
@@ -136,11 +143,16 @@ export interface NaiveWorkItem extends Omit<WorkItem, "thumbnail" | "stills">{
     stills: Array<SanityImage>
 }
 
-export interface HomePage {
-    reelLink: string
+export interface ReelPage {
+    reelLink: string,
+    reelThumbnail?: SanityImage
 }
 
-export type HomePageQuery = CoreResponse & HomePage
+export interface Miscellaneous {
+    companyEmail: string,
+    companyInstagram: string,
+    companyLogo: SanityImage
+}
 
 export interface QueryResponse<ResultType> extends Query {
     result: Array<ResultType>
