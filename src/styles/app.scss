@@ -3,11 +3,10 @@
 #root{
     display: flex;
     justify-content: center;
-    // min-height: -webkit-fill-available;
 }
 
 body{
-    background-color: #faf9f0;
+    background-color: white
 }
 
 @media(orientation:landscape) {

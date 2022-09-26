@@ -1,24 +1,23 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import contextSlice from '../contextSlice';
 import aboutSlice from '../features/about/aboutSlice';
 import gearSlice from '../features/gear/gearSlice';
-import workSlice from '../features/work/workSlice';
+import { sanityApi } from './sanityApi';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        // Ignore these action types
-        ignoredActions: ['students/addTag', 'students/removeTag', 'students/fetchStudents'],
-        // Ignore these field paths in all actions
-        ignoredActionPaths: ['meta.arg', 'payload.timestamp'],
-        // Ignore these paths in the state
-        ignoredPaths: ['students', 'studentsSlice.students'],
+        ignoredActionPaths: ['meta.baseQueryMeta'],
       },
-    }),
+    }).concat(
+        sanityApi.middleware
+    ),
   reducer: {
     aboutSlice,
     gearSlice,
-    workSlice
+    [sanityApi.reducerPath]: sanityApi.reducer,
+    contextSlice: contextSlice.reducer,
   },
 });
 

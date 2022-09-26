@@ -1,23 +1,31 @@
 @media (orientation: landscape){
     #video-container{
-    display: grid; 
-    grid-template-areas: "left-column"
-                         "right-column";
-    grid-template-columns: 50% 50%;
-    grid-template-rows: auto;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        width: 90vw;
+        justify-content: space-between;
     }
     .video-item{
-        list-style-type: none;
-        display: flex;
-        flex-flow: column;
-        justify-content: start;
-        height: 35rem;
-        width: 40rem;
+        margin: .25vh;
+        > img {
+            border-radius: .15rem;
+            object-fit: cover;
+            width: 100%;
+            height: 27vh;
+        }
+    }
+    #modal-video-container {
+        height: 60vh;
+        width: 70vw;
     }
     .work-video-mobile{
         display: none;
     }
     .react-player__preview{
+        width: 100%;
+        height: 100%;
+    }
+    .image-only-work-item {
         width: 100%;
         height: 100%;
     }
@@ -38,15 +46,6 @@
             margin: 5px 0;
         }
     }
-    .left-column{
-        grid-area: "left-column";
-        padding-right: .5rem;
-    }
-
-    .right-column{
-        grid-area: "right-column";
-        padding-left: .5rem;
-    }
 }
 
 @media (orientation: portrait){
@@ -57,25 +56,19 @@
     .work-video-desktop{
         display: none;
     }
-    .work-video-mobile{
-        min-height: 20vh;
-        min-width: 80vw;
-    }
+
     .video-item{
-        display: grid;
-        grid-template-rows: 60% 40%;
+        > img {
+            border-radius: .15rem;
+            width: 100%
+        }
     }
     .video-item-text-container{
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: 50% 50%;
         list-style-type: none;
-        align-items: flex-start;
         font-weight: 400;
         font-style: italic;
         letter-spacing: .01em;
         padding-left: 0px;
-        margin: .5em 0em 3em 0em;
         .Title-li{
             grid-column-start: 1;
             grid-column-end: 3;
@@ -86,6 +79,11 @@
             font-size: calc((2 - 1) * 1vw + .5em);
         }
     }
+
+    #modal-video-container {
+        width: 85vw;
+        height: 30vh;
+    }
 }
 
 #work-container{
@@ -95,6 +93,9 @@
     p{
         color:#52a376;
         font-size: calc((2 - 1) * 1vw + 1rem);
+    }
+    .click-me:hover{
+        cursor: pointer;
     }
 }
 

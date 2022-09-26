@@ -1,17 +1,17 @@
-export interface allWork{
-    
+import { P } from "ts-pattern";
+import { Home } from "../pages/home";
+import { credits } from "./assetTypes";
+
+export type SanityImage = {
+    _type: "image";
+    asset: {
+        _ref: string;
+        _type: string;
+    }
+    alt?: string, 
 }
 
-// _id(pin):"0dc666bf-8115-4399-b969-bbf0e3fe4369"
-// name(pin):"Show Me The Body"
-// embedCode(pin):"<iframe width="640" height="378" src="https://www.youtube.com/embed/B15q6Uz6inY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>"
-// link(pin):"https://youtu.be/B15q6Uz6inY"
-// source(pin):"youtube"
-// titleOfWork(pin):"Arcanum"
-// titleToDisplay(pin):"Show Me The Body - Arcanum"
-// videoType(pin):"musicVideo"
-
-export interface WorkItem{
+export interface WorkItem {
     _id: string,
     artist?: {name: string},
     nonprofitInstitution?: {name: string},
@@ -19,69 +19,128 @@ export interface WorkItem{
     embedCode: string,
     link: string, 
     source: string,
+    thumbnail: string | null,
+    stills: Array<string> | null,
     titleOfWork: string,
     titleToDisplay: string,
     videoType:"musicVideo"|"nonprofit"|"commercial",
-    credits: Array<object>,
+    credits: Array<credits>,
 }
-// artist: {_ref: '791326a1-4654-4b6b-9214-8292da8b9cef', _type: 'reference'}
-// credits: {director: 'Landon Yost', directorOfPhotography: 'Andrea Gavazzi', post: 'Matt Schaff', production: 'ANIMA Works'}
-// embedCode: "<iframe width=\"640\" height=\"378\" src=\"https://www.youtube.com/embed/B15q6Uz6inY\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
-// link: "https://youtu.be/B15q6Uz6inY"
-// slug: {_type: 'slug', current: 'arcanum'}
-// source: "youtube"
-// titleOfWork: "Arcanum"
-// titleToDisplay: "Show Me The Body - Arcanum"
-// videoType: "musicVideo"
-// _createdAt: "2021-12-18T20:20:00Z" 
-// _id: "0dc666bf-8115-4399-b969-bbf0e3fe4369"
-// _rev: "Oysj875UTxs0artuxMcxp5" 
-// _type: "video"
-// _updatedAt: "2021-12-18T20:20:00Z"
 
-export interface AboutInfo{
+export const coreSanityResultPattern = {
+    "_createdAt": P.string,
+    "_id": P.string,
+    "_rev": P.string,
+    "_type": P.string,
+    "_updatedAt": P.string,
+}
+
+export const HomePageMatchPattern = {
+    ...coreSanityResultPattern,
+    "reelLink": P.string,
+}
+
+export const aboutPageMatchPattern = {
+    "_createdAt": P.string,
+    "_id": P.string,
+    "_rev": P.string,
+    "_type": P.string,
+    "_updatedAt": P.string,
+    "email": P.string,
+    "instagram": P.string,
+    "aboutPageImage": {
+        "_type": P.string,
+        "asset": {
+            "_ref": P.string,
+            "_type": P.string,
+        }
+    },
+    "aboutPageText": P.array({
+        "_key": P.string,
+        "type": P.string,
+        "children": P._,
+        "markDefs": P._,
+        "style": P.string,
+    }),
+}
+
+export interface AboutInfo extends CoreResponse{
     aboutPageImage: object,
-    aboutPageText: [],
+    aboutPageText: Array<BlockContent>,
     email: string,
     instagram: string,
-    _createdAt: string,
-    _id: string,
-    _rev: string,
-    _type: "info",
-    _updatedAt: string
 }
 
-// aboutPageImage: {_type: 'image', asset: {…}}
-// aboutPageText: [{…}]
-// email: "shootwithanima@gmail.com"
-// instagram: "https://www.instagram.com/animaworks.nyc/"
-// _createdAt: "2021-12-18T22:07:25Z"
-// _id: "263f3d85-f53c-474f-9bf0-24ba733de604"
-// _rev: "5HHceZ3LuAltt4AEK1c5qg"
-// _type: "info"
-// _updatedAt: "2021-12-18T22:07:25Z"
+export interface FormattedAboutInfo {
+    email: string,
+    instagram: string,
+    images: Array<SanityImage>,
+    text: Array<BlockContent>
+}
 
-export interface GearItem {
+export interface GearItem extends CoreResponse {
     features: Array<string>,
     name: string,
     slug: {
         current: string
         _type: string,
     },
+}
+
+export type BlockContent = {
+    _key: string;
+    _type: string;
+    marks? : Array<String>;
+    text?: string;
+    level?: number,
+    listItem?: string,
+    markDefs?: Array<String>,
+    style?: string,
+    type?: string,
+    children?: any,
+}
+
+export interface CoreResponse  {
     _createdAt: string,
     _id: string,
     _rev: string,
     _type: string,
-    _updatedAt: string
+    _updatedAt: string,
 }
 
-// features: (3) ['Flawless reflex body', 'Standard 16mm 4:3 gate', 'C-mount Switar lenses: 10mm, 25mm, 75mm, bolex zoom']
-// name: "Bolex Rex 5 Package"
-// slug:
-    // current: "bolex-rex-5-package"
-    // _type: "slug"
-// _createdAt: "2021-12-18T21:46:22Z"
-// _id: "1774ad86-2ad6-4fb6-ae85-cc05bc931920"
-// _rev: "5HHceZ3LuAltt4AEK1Z5DF"
-// _type: "gear"
-// _updatedAt: "2021-12-18T21:46:22Z"
+export type Slug = {
+    _type: "slug";
+    current: string;
+}
+
+export type Query = {
+    ms: number;
+    query: string;
+}
+
+export interface Link {
+    _key: string;
+    _type: string;
+    link: string;
+    title: string;
+    displayText: string;
+}
+
+interface NaiveWorkItem extends Omit<WorkItem, "thumbnail" | "stills">{
+    thumbnail: SanityImage,
+    stills: Array<SanityImage>
+}
+
+export interface WorkItemQuery extends Query {
+    result: Array<NaiveWorkItem>
+}
+
+export interface HomePage {
+    reelLink: string
+}
+
+type HomePageResponse = CoreResponse & HomePage
+
+export interface HomePageQuery extends Query {
+    result: Array<HomePageResponse>
+}

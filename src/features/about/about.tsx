@@ -1,30 +1,30 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { PortableText } from '@portabletext/react';
+import { useAboutInfoQuery } from '../../redux/sanityApi';
 import '../../styles/about.scss';
 import { sanityImager } from '../../utils/sanityRequests';
-import { fetchInfo } from './aboutSlice';
 
 export const About = () => {
 
-    const dispatch = useAppDispatch();
-    
-    useEffect(() => {
-        dispatch(fetchInfo());
-    }, [dispatch]);
-
-    const {aboutSlice} = useAppSelector(state => state);
+    const { data } = useAboutInfoQuery()
 
     const renderPage = () => {
-        if (aboutSlice.LOADED) {
-            const text = aboutSlice.info.aboutPageText[0].children[0].text
-            const imageUrl = sanityImager(aboutSlice.info.aboutPageImage).url()
+        if (data && data.text) {
+            const text = data.text[0]
+            let imageUrl
+            try {
+                imageUrl = sanityImager(data.images[0]).url()
+            } catch(e) {
+                console.log(e);
+            }
             return (
                 <div id="about-container">
                     <div id="about-img-container">
                         <img src={imageUrl} alt="about-pic" />
                     </div>
                     <div id="about-block">
-                        {text}
+                        <PortableText
+                            value={text}
+                        />
                     </div>
                 </div>
             )

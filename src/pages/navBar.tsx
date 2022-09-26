@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom"
+import { useLazyAboutInfoQuery } from "../redux/sanityApi"
 import '../styles/navbar.scss'
 
 export const NavBar = () => {
@@ -13,7 +14,7 @@ export const NavBar = () => {
         }
     }
 
-    const toAbout = <Link to="/about" id={underlineMe("/about")}>About</Link>
+    const toAbout = <Link to="/about" id={underlineMe("/about")} >About</Link>
     const toHome = <Link to="/" id={underlineMe("/")}>Home</Link>
     const toWork = <Link to="/work" id={underlineMe("/work")}>Work</Link>
     const toGear = <Link to="/gear" id={underlineMe("/gear")}>Gear</Link>
