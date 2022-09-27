@@ -9,20 +9,6 @@ type Props = {
     i: number
 }
 
-const modalStyle = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: '#f5f5f5',
-    boxShadow: 24,
-    borderRadius: 1,
-    p: 1,
-    "&:focus": {
-        outline: "none"
-    }
-};
-
 const WorkItem = ({video, orientation, i}: Props) => {
 
     const [ open, setOpen ] = useState(false);
@@ -48,7 +34,6 @@ const WorkItem = ({video, orientation, i}: Props) => {
             <WorkItemModal
                 open={open}
                 setOpen={setOpen}
-                modalStyle={modalStyle}
                 video={video}
             />
         </div>
