@@ -81,7 +81,7 @@ const WorkItem = ({video, orientation, i}: Props) => {
     
     return(
         <div className="video-item" key={video._id}>
-            <img className={thumbnailClasses({orientation, link: video.link})} onClick={(e) => video.link ? setOpen(true) : null} src={video.thumbnail}/>
+            <img alt="video thumbnail" className={thumbnailClasses({orientation, link: video.link})} onClick={(e) => video.link ? setOpen(true) : null} src={video.thumbnail}/>
             {modal()}
         </div>
     )

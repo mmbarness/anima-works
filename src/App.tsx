@@ -6,14 +6,14 @@ import { useLazyAboutInfoQuery, useLazyMiscellaneousQuery } from './redux/sanity
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import useMediaQuery from './useMediaQuery';
-import contextSlice from './contextSlice';
+import contextSlice, { InitialState } from './contextSlice';
 import {Routes} from './utils/routes';
 import { useLocation } from 'react-router-dom';
+import { match, P } from 'ts-pattern';
 
 const App = () => {
 
     const location = useLocation();
-    console.log({location})
     
     const [ triggerAbout ] = useLazyAboutInfoQuery()
 
@@ -31,9 +31,10 @@ const App = () => {
     const newOrientation = useMediaQuery("(orientation: landscape)") ? "landscape" : "portrait";
 
     useEffect(() => {
-        if (newOrientation !== currentOrientation) {
-            dispatch(contextSlice.actions.setOrientation(newOrientation));
-        }
+        match(newOrientation)
+            .with(currentOrientation, () => null)
+            .with(P._, (or:InitialState['currentOrientation']) => dispatch(contextSlice.actions.setOrientation(or)))
+            .run()
     }, [currentOrientation, dispatch, newOrientation])
 
     return (

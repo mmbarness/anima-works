@@ -1,6 +1,5 @@
 import '../../styles/work.scss';
 import React, { Suspense, useCallback } from 'react';
-import { useEffect, useState } from 'react';
 import { useWorkItemsQuery } from '../../redux/sanityApi';
 import { WorkItem } from '../../interfaces/sanityTypes';
 import { useAppSelector } from '../../redux/hooks';
