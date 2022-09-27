@@ -74,7 +74,7 @@ export const WorkItemModal = (params: {
                                     top: 0,
                                     left: 0,
                                     position:"absolute",
-                                    width: "auto",
+                                    width: "72.5vw",
                                     height: "auto",
                                     maxWidth: "100%",
                                     maxHeight: "100%"

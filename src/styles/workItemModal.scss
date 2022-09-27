@@ -1,7 +1,3 @@
-.stills-carousel {
-    width: max-content;
-}
-
 .still-aspect-ratio-enforcer{
     position: relative;
     height: 0;
@@ -36,6 +32,9 @@
 
 
 @media(orientation: landscape) {
+    .stills-carousel{
+        width:60vw
+    }
     #aspect-ratio-enforcer{
         width: 60vw;
     }
@@ -60,6 +59,9 @@
 }
 
 @media(orientation: portrait) {
+    .stills-carousel{
+        width:60vw
+    }
     #aspect-ratio-enforcer{
         width: 80vw;
     }
