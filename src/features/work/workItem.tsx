@@ -1,9 +1,12 @@
 import type { WorkItem as WorkItemAsset } from "../../types/sanityTypes"
-import {default as _ReactPlayer} from 'react-player';
-import {ReactPlayerProps} from "react-player/types/lib";
-import { Modal, Box } from '@mui/material';
-import { useState } from "react";
+import Carousel from "react-material-ui-carousel"
+import { default as _ReactPlayer } from 'react-player';
+import { ReactPlayerProps } from "react-player/types/lib";
+import { Modal, Box, Paper, Button } from '@mui/material';
+import { MouseEvent, useRef, useState } from "react";
 import { match, P } from "ts-pattern";
+import { Link } from "react-router-dom";
+import { WORK_ITEM_STILLS__WIDTH } from "../../utils/constants";
 const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
 type Props = {
@@ -44,10 +47,83 @@ const thumbnailClasses = (params: {orientation:"landscape" | "portrait", link:st
 
 const WorkItem = ({video, orientation, i}: Props) => {
            
-    const {credits} = video;
+    const { credits, stills } = video;
 
-    const [open, setOpen] = useState(false);
+    const ref = useRef()
+
+    const [ open, setOpen ] = useState(false);
+    const [ videoOrStills, setVideoOrStills ] = useState({
+        video: true,
+        stills: false
+    })
+
     const handleClose = () => setOpen(false);
+
+    const renderVideo = () => (
+        <ReactPlayer
+            url={video.link}
+            className={orientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"}
+            width="100%"
+            height="100%"
+            light={video.thumbnail ? video.thumbnail : true}
+            controls={true}
+            origin={window.location.origin}
+        />
+    )
+
+    const renderStills = () => (
+        <div className="stills-carousel">
+            <Carousel
+                autoPlay={false}
+                sx={{
+                    width: '70vw',
+                    height: 'maxContent'
+                }}
+            >
+                {
+                    video.stills.map((url:string, i) => (        
+                        <Paper key={i} >
+                            <img style={ {
+                                'borderRadius': '0.5rem',
+                                'width': WORK_ITEM_STILLS__WIDTH
+                            } } src={url} alt="still"/>
+                        </Paper>
+                    ))
+                }
+            </Carousel>
+        </div>
+    )
+
+    const handleVideoOrStillsToggle = (params: {e:MouseEvent<HTMLButtonElement>, target:'video'|'stills'}) => {
+        params.e.preventDefault();
+        setVideoOrStills(
+            match(params.target)
+                .with('video', () => ({
+                        video: true,
+                        stills: false,
+                    })
+                )
+                .with('stills', () => ({
+                    video: false,
+                    stills: true,
+                }))
+                .run()
+        )
+        return
+    }
+
+    const decideRender = () => (
+        match(videoOrStills)
+            .with({
+                video: true,
+                stills: false,
+            }, () => renderVideo())
+            .with({
+                video: false,
+                stills: true, 
+            }, () => renderStills())
+            .run()
+    )
 
     const modal = () => (
         <Modal
@@ -58,15 +134,11 @@ const WorkItem = ({video, orientation, i}: Props) => {
         >
             <Box sx={modalStyle}>
                 <div id="modal-video-container">
-                    <ReactPlayer
-                        url={video.link}
-                        className={orientation === 'landscape' ? "work-video-desktop" : "work-video-mobile"}
-                        width="100%"
-                        height="100%"
-                        light={video.thumbnail ? video.thumbnail : true}
-                        controls={true}
-                        origin={window.location.origin}
-                    />
+                    <div>
+                        <Button onClick={(e) => handleVideoOrStillsToggle({e, target:'video'})}>Video</Button>
+                        <Button onClick={(e) => handleVideoOrStillsToggle({e, target:'stills'})}>Stills</Button>
+                    </div>
+                    { decideRender() }
                 </div>
                 <ul className="video-item-text-container">
                     <li className="video-item-text Title-li" key={`title-${video._id}`}>{video.titleToDisplay}</li>
@@ -74,6 +146,9 @@ const WorkItem = ({video, orientation, i}: Props) => {
                         <li key={`${credit.title}-${video._id}`} className={`video-item-text ${credit.title}-li`}>{credit.title}: {credit.Name}</li>
                     ))}
                 </ul>
+                <Link to={`/work/${video._id}`}>
+                    See more
+                </Link>
             </Box>
         </Modal>
 

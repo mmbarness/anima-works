@@ -10,7 +10,7 @@ const underlineMe = (linkPath:string, pathname:string) => {
 }
 
 export default function navbarLinks (pathname: string) {
-    return routesObj.filter(route => route.path !== "/").map((route, index) => {
+    return routesObj.filter(route => route.path !== "/" && route.renderInNavbar).map((route, index) => {
         return (
             <Link 
                 key={index} 
