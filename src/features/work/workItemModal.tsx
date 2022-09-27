@@ -33,17 +33,21 @@ export const WorkItemModal = (params: {
     const { credits, stills } = params.video;
 
     const renderVideo = () => (
-        <div id="aspect-ratio-enforcer">
-            <ReactPlayer
-                url={params.video.link}
-                className={`modal-video ${currentOrientation}`} 
-                width="100%"
-                height="100%"
-                light={params.video.thumbnail ? params.video.thumbnail : true}
-                controls={true}
-                origin={window.location.origin}
-            />
-        </div>
+        <Paper 
+            elevation={10}
+        >
+            <div id="aspect-ratio-enforcer">
+                <ReactPlayer
+                    url={params.video.link}
+                    className={`modal-video ${currentOrientation}`} 
+                    width="100%"
+                    height="100%"
+                    light={params.video.thumbnail ? params.video.thumbnail : true}
+                    controls={true}
+                    origin={window.location.origin}
+                />
+            </div>
+        </Paper>
     )
         
     const renderStills = () => (
@@ -51,17 +55,31 @@ export const WorkItemModal = (params: {
             <Carousel
                 autoPlay={false}
                 sx={{
-                    width: '70vw',
-                    height: 'maxContent'
+                    minWidth:"72.5vw",
+                    width: "auto",
+                    height: "auto",
+                    maxWidth: "100%",
+                    maxHeight: "100%"
                 }}
                 >
                 {
                     stills.map((url:string, i) => (        
-                        <Paper key={i} >
-                            <img style={ {
-                                'borderRadius': '0.5rem',
-                                'width': WORK_ITEM_STILLS__WIDTH
-                            } } src={url} alt="still"/>
+                        <Paper 
+                            key={i} 
+                            elevation={10}
+                        >
+                            <div className="still-aspect-ratio-enforcer">
+                                <img style={ {
+                                    borderRadius: '0.5rem',
+                                    top: 0,
+                                    left: 0,
+                                    position:"absolute",
+                                    width: "auto",
+                                    height: "auto",
+                                    maxWidth: "100%",
+                                    maxHeight: "100%"
+                                } } src={url} alt="still"/>
+                            </div>
                         </Paper>
                     ))
                 }
