@@ -1,5 +1,5 @@
 import { match, P } from "ts-pattern"
-import { AboutInfo, HomePageMatchPattern, Miscellaneous, MiscellaneousPattern, NaiveWorkItem, QueryResponse, ReelPage } from "../interfaces/sanityTypes"
+import { AboutInfo, HomePageMatchPattern, Miscellaneous, MiscellaneousPattern, NaiveWorkItem, QueryResponse, ReelPage } from "../types/sanityTypes"
 import { imageUrlFor } from "../redux/sanityApi"
 import { WORK_ITEM_STILLS__WIDTH, WORK_ITEM_THUMBNAIL_WIDTH } from "./constants"
 

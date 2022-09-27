@@ -1,4 +1,4 @@
-import { singlePackage } from "../../interfaces/assetTypes"
+import { singlePackage } from "../../types/assetTypes"
 import { useGearQuery } from "../../redux/sanityApi";
 import '../../styles/gear.scss';
 

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import imageUrlBuilder from '@sanity/image-url';
-import { FormattedAboutInfo, GearItem, SanityImage, WorkItem, ReelPage, QueryResponse, Miscellaneous } from '../interfaces/sanityTypes';
+import { FormattedAboutInfo, GearItem, SanityImage, WorkItem, ReelPage, QueryResponse, Miscellaneous } from '../types/sanityTypes';
 import { apiQueries } from '../utils/apiQueries';
 import { apiResponseTransforms } from '../utils/apiResponseTransforms';
 

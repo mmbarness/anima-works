@@ -1,4 +1,4 @@
-import type { WorkItem as WorkItemAsset } from "../../interfaces/sanityTypes"
+import type { WorkItem as WorkItemAsset } from "../../types/sanityTypes"
 import {default as _ReactPlayer} from 'react-player';
 import {ReactPlayerProps} from "react-player/types/lib";
 import { Modal, Box } from '@mui/material';
