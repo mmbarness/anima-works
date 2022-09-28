@@ -6,13 +6,13 @@ import ReactPlayer from "react-player";
 import Carousel from "react-material-ui-carousel"
 import { WorkItem } from "../../types/sanityTypes";
 import { useAppSelector } from "../../redux/hooks";
-import { WORK_ITEM_STILLS__WIDTH } from "../../utils/constants";
 
 const modalStyle = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
+    width: "72.5vw",
     bgcolor: '#f5f5f5',
     boxShadow: 24,
     borderRadius: 1,
