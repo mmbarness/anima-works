@@ -1,5 +1,6 @@
 import '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const sanityClient = require('@sanity/client')
 
 const today = new Date();

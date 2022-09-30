@@ -4,6 +4,7 @@ import { FormattedAboutInfo, GearItem, SanityImage, WorkItem, ReelPage, QueryRes
 import { apiQueries } from '../utils/apiQueries';
 import { apiResponseTransforms } from '../utils/apiResponseTransforms';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const sanityClient = require('@sanity/client')
 const baseURL = 'https://uvsp04xk.api.sanity.io/v2022-10-21/data/query/production';
 
