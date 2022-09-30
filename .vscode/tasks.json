@@ -1,0 +1,70 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "type": "typescript",
+        "tsconfig": "tsconfig.json",
+        "option": "watch",
+        "problemMatcher": [
+          "$tsc-watch"
+        ],
+        "group": "build",
+        "label": "tsc: watch - tsconfig.json"
+      },
+      {
+        "label": "run playright package tests",
+        "type": "shell",
+        "command": "npx",
+        "problemMatcher":  {
+          "owner": "playwright",
+          "source": "playwright",
+          "fileLocation": ["relative", "${workspaceFolder}/packages"],
+          "pattern": [
+            {
+              "file": 1,
+              "line": 2,
+              "column": 3,
+              "message": 4,
+              "regexp": "^\\s*\\s\\[\\w*\\] \\› (\\w+\/tests\/[0-9A-Za-z-.]*spec.ts):(\\d*):([0-9]*)\\s›\\s([›a-zA-Z0-9_ ]*)$"
+            }
+          ]
+        },
+        "args": ["playwright", "test", "${input:packageOrSpecFile}", "--workers=${input:workers}", "${input:additionalFlags}"]
+      },
+      {
+        "type": "npm",
+        "script": "lint",
+        "problemMatcher": {
+          "base": "$eslint-stylish",
+          "pattern": [
+            {
+              "regexp": "^((?:[a-zA-Z]:)*[\\\/.]+.*?)$",
+              "kind": "location",
+              "file": 1
+            },
+            {
+              "regexp": "^\\s+(\\d+):(\\d+)\\s+(error|warning|info)\\s+(.+?)(?:\\s\\s+(.*))?$",
+              "line": 1,
+              "severity": 3,
+              "message": 4,
+              "code": 5,
+              "loop": true
+            }
+          ]
+        },
+        "label": "npm: lint"
+      },
+      {
+        "label": "purge eslint problems",
+        "type": "shell",
+        "command": "echo Cleaning problems...",
+        "group": "none",
+        "problemMatcher": {
+          "pattern": {
+            "regexp": "a^"
+          },
+          "owner": "eslint"
+        }
+      }
+    ]
+  }

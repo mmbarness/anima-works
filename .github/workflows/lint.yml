@@ -16,4 +16,4 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
       - run: npm install
-      - run: npm lint
+      - run: npm run lint

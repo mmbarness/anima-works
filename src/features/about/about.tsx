@@ -1,18 +1,19 @@
 import { PortableText } from '@portabletext/react';
-import { useAboutInfoQuery } from '../../redux/sanityApi';
+import { imageUrlFor, useAboutInfoQuery } from '../../redux/sanityApi';
 import '../../styles/about.scss';
-import { sanityImager } from '../../utils/sanityRequests';
 
 export const About = () => {
 
     const { data } = useAboutInfoQuery()
 
+    console.log({data})
+
     const renderPage = () => {
         if (data && data.text) {
-            const text = data.text[0]
+            const text = data.text
             let imageUrl
             try {
-                imageUrl = sanityImager(data.images[0]).url()
+                imageUrl = imageUrlFor(data.image).url()
             } catch(e) {
                 console.log(e);
             }

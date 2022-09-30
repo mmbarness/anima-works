@@ -1,5 +1,8 @@
 import { P } from "ts-pattern";
 import { credits } from "./assetTypes";
+import type {
+    PortableTextBlock,
+  } from '@portabletext/types'  
 
 export type SanityImage = {
     _type: string;
@@ -77,17 +80,15 @@ export const MiscellaneousPattern = {
 
 
 export interface AboutInfo extends CoreResponse{
-    aboutPageImage: object,
-    aboutPageText: Array<BlockContent>,
+    aboutPageImage: SanityImage,
+    aboutPageText: Array<PortableTextBlock>,
     email: string,
     instagram: string,
 }
 
 export interface FormattedAboutInfo {
-    email: string,
-    instagram: string,
-    images: Array<SanityImage>,
-    text: Array<BlockContent>
+    image: SanityImage,
+    text: Array<PortableTextBlock>
 }
 
 export interface GearItem extends CoreResponse {
@@ -97,19 +98,6 @@ export interface GearItem extends CoreResponse {
         current: string
         _type: string,
     },
-}
-
-export type BlockContent = {
-    _key: string;
-    _type: string;
-    marks? : Array<String>;
-    text?: string;
-    level?: number,
-    listItem?: string,
-    markDefs?: Array<String>,
-    style?: string,
-    type?: string,
-    children?: any,
 }
 
 export interface CoreResponse  {
