@@ -29,8 +29,7 @@
     "lint": "eslint . --ext .ts",
     "test": "react-scripts test",
     "test:tsc": "tsc -p tsconfig.test.json -w",
-    "eject": "react-scripts eject",
-    "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions"
+    "eject": "react-scripts eject"
   },
   "resolutions": {
     "@types/react": "17.0.2",
