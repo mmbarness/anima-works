@@ -2,7 +2,6 @@ import '../styles/contact.scss'
 import { useMiscellaneousQuery } from '../redux/sanityApi';
 import { match, P } from 'ts-pattern';
 import { useAppSelector } from '../redux/hooks';
-//p sure emailjs lacks typings, so this file is jsx
 
 export const Contact = () => {
     

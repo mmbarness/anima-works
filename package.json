@@ -10,7 +10,6 @@
     "@reduxjs/toolkit": "^1.7.1",
     "@sanity/client": "^2.23.2",
     "@sanity/image-url": "^1.0.1",
-    "emailjs-com": "^3.2.0",
     "immer": "9.0.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -19,10 +18,8 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.1.0",
     "react-scripts": "^5.0.0",
-    "react-youtube": "^10.0.0",
     "sass": "^1.54.9",
     "ts-pattern": "^4.0.5",
-    "typescript": "^4.4.3",
     "url-parse": ">=1.5.6",
     "web-vitals": "^1.1.2"
   },
@@ -32,8 +29,7 @@
     "lint": "eslint . --ext .ts",
     "test": "react-scripts test",
     "test:tsc": "tsc -p tsconfig.test.json -w",
-    "eject": "react-scripts eject",
-    "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions"
+    "eject": "react-scripts eject"
   },
   "resolutions": {
     "@types/react": "17.0.2",
@@ -64,6 +60,7 @@
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "eslint": "^8.24.0",
-    "playwright": "^1.26.0"
+    "playwright": "^1.26.0",
+    "typescript": "^4.8.4"
   }
 }
