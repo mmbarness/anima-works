@@ -9,7 +9,7 @@ type Props = {
     i: number
 }
 
-const WorkItem = ({video, orientation, i}: Props) => {
+const WorkItem = ({video, orientation}: Props) => {
 
     const [ open, setOpen ] = useState(false);
     
@@ -28,7 +28,7 @@ const WorkItem = ({video, orientation, i}: Props) => {
                         .with(P._, () => "dont-click-me")
                         .run()
                 } 
-                onClick={(e) => video.link ? setOpen(true) : null} 
+                onClick={(e) => { e.preventDefault(); video.link ? setOpen(true) : null }} 
                 src={ video.thumbnail }
             />
             <WorkItemModal
