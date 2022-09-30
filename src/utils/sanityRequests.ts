@@ -7,7 +7,7 @@ const year = today.getFullYear();
 const month = today.getMonth().toString().length === 1 ? `0${today.getMonth()+1}` : today.getMonth();
 const day = today.getDate().toString().length === 1 ? `0${today.getDate()}` : today.getDate();
 
-let dateStr = `${year}-${month}-${day}`
+const dateStr = `${year}-${month}-${day}`
 
 const client = sanityClient({
   projectId: 'uvsp04xk',

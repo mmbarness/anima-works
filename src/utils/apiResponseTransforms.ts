@@ -32,7 +32,7 @@ const about = (response: QueryResponse<AboutInfo>) => {
                 "aboutPageImage": P.select('aboutPageImage'),
                 "aboutPageText": P.select('aboutPageText'),
             }, result => [result.aboutPageText, result.aboutPageImage])
-            .with(P._, result => [])
+            .with(P._, () => [])
             .run()
     ).reduce((acc:any,ele) => ( 
         [...acc[0], ele[0], [...acc[1], ele[1]]]
@@ -52,7 +52,7 @@ const about = (response: QueryResponse<AboutInfo>) => {
 const miscellaneous = (response: QueryResponse<Miscellaneous>) => (
     match(response.result[0])
         .with((MiscellaneousPattern), response => (response))
-        .with(P._, response => ({
+        .with(P._, () => ({
             companyEmail: "",
             companyInstagram: "do not render",
             companyLogo: {
@@ -70,7 +70,7 @@ const miscellaneous = (response: QueryResponse<Miscellaneous>) => (
 const reel = (response: QueryResponse<ReelPage>) => (
     match(response.result[0])
         .with(HomePageMatchPattern, response => ({reelLink: response.reelLink}))
-        .with(P._, response => ({reelLink: ""}))
+        .with(P._, () => ({reelLink: ""}))
         .run()
 )
 

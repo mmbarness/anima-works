@@ -102,11 +102,11 @@ export interface GearItem extends CoreResponse {
 export type BlockContent = {
     _key: string;
     _type: string;
-    marks? : Array<String>;
+    marks? : Array<string>;
     text?: string;
     level?: number,
     listItem?: string,
-    markDefs?: Array<String>,
+    markDefs?: Array<string>,
     style?: string,
     type?: string,
     children?: any,

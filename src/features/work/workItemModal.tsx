@@ -1,14 +1,14 @@
 import '../../styles/workItemModal.scss';
 import { SetStateAction, useState, Dispatch } from "react"
 import { Modal, Box, Paper, Button } from '@mui/material';
-import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import Carousel from "react-material-ui-carousel"
 import { WorkItem } from "../../types/sanityTypes";
 import { useAppSelector } from "../../redux/hooks";
 
 const modalStyle = {
-    position: 'absolute' as 'absolute',
+    maxHeight: '90vh',
+    position: 'absolute' as const,
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
@@ -27,7 +27,6 @@ export const WorkItemModal = (params: {
     setOpen: Dispatch<SetStateAction<boolean>>,
     video: WorkItem
 }) => {
-
     const { currentOrientation } = useAppSelector(state => state.contextSlice);
 
     const { credits, stills } = params.video;
@@ -102,14 +101,14 @@ export const WorkItemModal = (params: {
                     <div id="toggle-modal-view">
                         <Button 
                             variant="outlined" 
-                            onClick={(e) => setCurrentRenderFn(renderVideo)}
+                            onClick={() => setCurrentRenderFn(renderVideo)}
                             style={{
                                 margin:"0rem 1rem 0rem 0rem"
                             }}
                         >Video</Button>
                         <Button 
                             variant="outlined" 
-                            onClick={(e) => setCurrentRenderFn(renderStills)}
+                            onClick={() => setCurrentRenderFn(renderStills)}
                             style={{
                                 margin:"0rem 0rem 0rem 1rem"
                             }}
