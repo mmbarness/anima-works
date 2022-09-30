@@ -13,7 +13,7 @@ export const WorkPage = () => {
         .with([P.string, P.string], regexMatchGroups => {
             return regexMatchGroups[1]
         })
-        .with(P._, notSure => {
+        .with(P._, () => {
             return 'invalid_id'
         })
         .run()

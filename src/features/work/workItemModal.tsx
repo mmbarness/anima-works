@@ -101,14 +101,14 @@ export const WorkItemModal = (params: {
                     <div id="toggle-modal-view">
                         <Button 
                             variant="outlined" 
-                            onClick={() => setCurrentRenderFn(renderVideo)}
+                            onClick={(e) => { e.preventDefault(); setCurrentRenderFn(renderVideo) }}
                             style={{
                                 margin:"0rem 1rem 0rem 0rem"
                             }}
                         >Video</Button>
                         <Button 
                             variant="outlined" 
-                            onClick={() => setCurrentRenderFn(renderStills)}
+                            onClick={(e) => { e.preventDefault(); setCurrentRenderFn(renderStills) }}
                             style={{
                                 margin:"0rem 0rem 0rem 1rem"
                             }}

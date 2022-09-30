@@ -29,17 +29,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint . --ext .ts",
     "test": "react-scripts test",
     "test:tsc": "tsc -p tsconfig.test.json -w",
-    "lint": "eslint . --ext .ts",
     "eject": "react-scripts eject",
     "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "resolutions": {
     "@types/react": "17.0.2",
@@ -58,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@portabletext/types": "^1.0.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
