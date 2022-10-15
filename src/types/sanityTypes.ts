@@ -76,6 +76,7 @@ export const MiscellaneousPattern = {
     "companyEmail": P.string,
     "companyInstagram": P.string,
     "companyLogo": ImagePattern,
+    "coverPhoto": ImagePattern,
 }
 
 
@@ -137,6 +138,7 @@ export interface ReelPage {
 }
 
 export interface Miscellaneous {
+    coverPhoto: SanityImage,
     companyEmail: string,
     companyInstagram: string,
     companyLogo: SanityImage

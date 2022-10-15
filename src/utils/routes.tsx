@@ -1,16 +1,16 @@
 import { useRoutes } from "react-router-dom";
 import { About } from "../features/about/about";
 import { Gear } from "../features/gear/gear";
-import { Work } from "../features/work/workIndex";
 import { WorkPage } from "../features/work/workPage";
 import { Contact } from "../pages/Contact";
 import { Reel } from "../pages/Reel";
+import { Home } from "../pages/Home";
 
 export const routesObj = [
     {
         path: "/",
-        pathName: "Work",
-        element: <Work />,
+        pathName: "home",
+        element: <Home />,
         renderInNavbar: true,
     },
     {
@@ -21,25 +21,25 @@ export const routesObj = [
     },
     { 
         path: "/reel", 
-        pathName: "Reel",
+        pathName: "reel",
         element: <Reel />,
         renderInNavbar: true,
     },
     { 
         path: "/gear", 
-        pathName: "Gear",
+        pathName: "gear",
         element: <Gear />,
         renderInNavbar: true,
     },
     { 
         path: "/about", 
-        pathName: "About",
+        pathName: "about",
         element: <About />,
         renderInNavbar: true,
     },
     { 
         path: "/contact", 
-        pathName: "Contact",
+        pathName: "contact",
         element: <Contact />,
         renderInNavbar: true,
     }

@@ -41,7 +41,10 @@ const about = (response: QueryResponse<AboutInfo>) => (
 
 const miscellaneous = (response: QueryResponse<Miscellaneous>) => (
     match(response.result[0])
-        .with((MiscellaneousPattern), response => (response))
+        .with((MiscellaneousPattern), response => ({
+            ...response,
+            coverPhoto: response.coverPhoto
+        }))
         .with(P._, () => ({
             companyEmail: "",
             companyInstagram: "do not render",
@@ -52,7 +55,15 @@ const miscellaneous = (response: QueryResponse<Miscellaneous>) => (
                     "_type": "",
                 },
                 "alt": "", 
-            }
+            },
+            coverPhoto: {
+                "_type": "",
+                "asset": {
+                    "_ref": "",
+                    "_type": "",
+                },
+                "alt": "", 
+            },
         }))
         .run()
 )
