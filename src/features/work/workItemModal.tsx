@@ -11,9 +11,9 @@ const modalStyle = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "72.5vw",
+    // width: "72.5vw",
     bgcolor: '#f5f5f5',
-    boxShadow: 24,
+    boxShadow: 0,
     borderRadius: 1,
     p: 1,
     "&:focus": {
@@ -33,7 +33,10 @@ export const WorkItemModal = (params: {
 
     const renderVideo = () => (
         <Paper 
-            elevation={10}
+            elevation={1}
+            style={{
+                maxHeight: "70vh",
+            }}
         >
             <div id="aspect-ratio-enforcer">
                 <ReactPlayer
@@ -54,7 +57,7 @@ export const WorkItemModal = (params: {
             <Carousel
                 autoPlay={false}
                 sx={{
-                    minWidth:"72.5vw",
+                    minWidth:"50vw",
                     width: "auto",
                     height: "auto",
                     maxWidth: "100%",
@@ -65,7 +68,10 @@ export const WorkItemModal = (params: {
                     stills.map((url:string, i) => (        
                         <Paper 
                             key={i} 
-                            elevation={10}
+                            elevation={1}
+                            style={{
+                                height: "50vh",
+                            }}
                         >
                             <div className="still-aspect-ratio-enforcer">
                                 <img style={ {
@@ -73,7 +79,7 @@ export const WorkItemModal = (params: {
                                     top: 0,
                                     left: 0,
                                     position:"absolute",
-                                    width: "72.5vw",
+                                    width: "50vw",
                                     height: "auto",
                                     maxWidth: "100%",
                                     maxHeight: "100%"
@@ -96,7 +102,9 @@ export const WorkItemModal = (params: {
             aria-describedby="modal-modal-description"
         >
             <Box sx={modalStyle}>
-                <div id="modal-content-container">
+                <div id="modal-content-container"             style={{
+                maxHeight: "90vw",
+            }}>
                     { currentRenderFn }
                     <div id="toggle-modal-view">
                         <Button 

@@ -1,10 +1,10 @@
 #navBar-links {
-    color:#52a376;
+    color:white;
     a {
-        color:#52a376;
+        color:white;
     }
     a:visited {
-        color:#52a376;
+        color:white;
     }
     .underline-me{
         text-decoration-line: underline;
@@ -50,6 +50,8 @@
         display: flex;
         justify-content:space-between;
         padding-top:0.5rem;
+        width: 90vw;
+        justify-self: center;
         #navBar-links{
             display: flex;
             justify-content: space-between;
