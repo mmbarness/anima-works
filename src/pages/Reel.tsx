@@ -21,7 +21,10 @@ export const Reel = () => {
     
     return match(isSuccess)
         .with(true, () => (
-            <div id="home-container">
+            <div id="reel-wrapper" style={{
+                height: "60vh",
+                width: "80vw",
+            }}>
                 <ReactPlayer
                     url={data.reelLink}
                     className={currentOrientation === 'landscape' ? "splash-desktop" : "splash-mobile"}

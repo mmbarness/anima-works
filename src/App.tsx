@@ -10,6 +10,8 @@ import contextSlice, { InitialState } from './contextSlice';
 import {Routes} from './utils/routes';
 import { useLocation } from 'react-router-dom';
 import { match, P } from 'ts-pattern';
+import { Home } from './pages/Home';
+import { Work } from './features/work/workIndex';
 
 const App = () => {
 
@@ -30,6 +32,31 @@ const App = () => {
 
     const newOrientation = useMediaQuery("(orientation: landscape)") ? "landscape" : "portrait";
 
+    const navBarHeight = match(location.pathname)
+        .with("/", () => "100vh")
+        .with(P._, () => "10vh")
+        .run();
+
+    const mainNavStyles = match(location.pathname)
+        .with("/", () => ({
+            display: "flex",
+            justifyContent: "center",
+            gridArea: "main",
+            zIndex: "1",
+            margin: "auto",
+            width: "90vw",
+        }))
+        .with(P._, () => ({
+            display: "flex",
+            justifyContent: "center",
+            gridArea: "main",
+            zIndex: "1",
+            margin: "auto",
+            width: "90vw",
+            // height: "100vh",
+        }))
+        .run();
+
     useEffect(() => {
         match(newOrientation)
             .with(currentOrientation, () => null)
@@ -37,10 +64,32 @@ const App = () => {
             .run()
     }, [currentOrientation, dispatch, newOrientation])
 
+    const renderHome = () => (
+        match(location.pathname)
+            .with("/", () => (
+                <Home/>
+            ))
+            .with(P._, () => null)
+            .run()
+    )
+
     return (
-        <div className="App" id="app-container">
+        <div className="App" id="app-container" style={{
+            margin: "auto",
+            display: "grid",
+            gridTemplateAreas: `
+                'nav'
+                'main'
+                'footer'
+            `,
+            gridTemplateRows: `${navBarHeight} auto auto`,
+            fontFamily: "Lora, serif",
+            caretColor: "transparent",
+            height: "100vh",
+        }}>
         <NavBar/>
-        <div id="main-navigation">
+        { renderHome() }
+        <div id="main-navigation" style={ mainNavStyles }>
             { Routes() }
         </div>
         { location.pathname !== "/contact" ? 

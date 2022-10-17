@@ -1,30 +1,23 @@
 
 @media (orientation: landscape){
     #home-container{
+        grid-area: nav;
         display: grid;
         grid-template-areas:
             "a"
-            "b";
-        width: 90vw;
+            "b"
+            "c";
         flex-flow: column nowrap;
-        top: -20vh;
-        position: relative;
     }
     #cover-photo {
-        left: 50%;
-        margin-left: -50vw;
-        margin-right: -50vw;
-        max-width: 100vw;
-        position: relative;
-        right: 50%;
         width: 100vw;
-        height: 103vh;
+        height: 100vh;
         grid-area: a;
     }
     #cover-photo-text-container {
         grid-area: a;
         z-index: 1;
-        margin-bottom: 0.75rem;
+        margin-bottom: 1.75rem;
         color: white;
         align-self: self-end;
         display: flex;
@@ -33,6 +26,9 @@
             height: 2.5rem;
         }
     };
+    #home-filler {
+        grid-area: c;
+    }
 }
 
 @media (orientation: portrait){

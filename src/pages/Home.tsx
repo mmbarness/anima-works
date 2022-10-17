@@ -27,14 +27,13 @@ export const Home = () => {
                 <p id="home-title">scroll down for more treats :)</p>
                 <div id="arrow-container">
                     <img src={downarrow} alt="down arrow" id="down-arrow" style={ {
-                        animation: "bounce 2s infinite",
                         width: "auto",
                         height: "100%",
                         marginBottom: "-1rem",
                     } }/>
                 </div>
             </div>
-            <Work/>
+            {/* <Work/> */}
         </div>
     )
 

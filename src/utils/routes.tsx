@@ -4,13 +4,13 @@ import { Gear } from "../features/gear/gear";
 import { WorkPage } from "../features/work/workPage";
 import { Contact } from "../pages/Contact";
 import { Reel } from "../pages/Reel";
-import { Home } from "../pages/Home";
+import { Work } from "../features/work/workIndex";
 
 export const routesObj = [
     {
         path: "/",
-        pathName: "home",
-        element: <Home />,
+        pathName: "work",
+        element: <Work />,
         renderInNavbar: false,
     },
     {

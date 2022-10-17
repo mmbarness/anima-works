@@ -11,20 +11,6 @@ body{
 }
 
 @media(orientation:landscape) {
-    #app-container{
-        margin:auto;
-        display: grid;
-        grid-template-areas:
-            "nav"
-            "main"
-            "footer";
-        max-height: fit-content;
-        min-height: 100vh;
-        width: 90vw;
-        grid-template-rows: auto;
-        font-family: 'Lora', serif;
-        caret-color: transparent;
-    }
     #ig-contact-svg-wrapper{
         fill:white;
     }
@@ -59,7 +45,8 @@ body{
     justify-content: center;
     grid-area: main;
     z-index: 1;
-    margin: 1rem 0rem;
+    margin: auto;
+    width: 90vw;
 }
 
 #footer{
