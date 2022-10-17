@@ -11,7 +11,7 @@ export const routesObj = [
         path: "/",
         pathName: "home",
         element: <Home />,
-        renderInNavbar: true,
+        renderInNavbar: false,
     },
     {
         path: "/work/:id",

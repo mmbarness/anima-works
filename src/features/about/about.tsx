@@ -6,8 +6,6 @@ export const About = () => {
 
     const { data } = useAboutInfoQuery()
 
-    console.log({data})
-
     const renderPage = () => {
         if (data && data.text) {
             const text = data.text
