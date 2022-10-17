@@ -1,13 +1,16 @@
 
 @media (orientation: landscape){
     #home-container{
+        display: grid;
+        grid-template-areas:
+            "a"
+            "b";
         width: 90vw;
-        display: flex;
         flex-flow: column nowrap;
         top: -20vh;
         position: relative;
     }
-    #cover-photo{
+    #cover-photo {
         left: 50%;
         margin-left: -50vw;
         margin-right: -50vw;
@@ -15,17 +18,21 @@
         position: relative;
         right: 50%;
         width: 100vw;
-        height: 100vh;
-        display: grid;
-        grid-template-areas:"a";
-        > #text-container {
-            grid-area: a;
-            z-index: 1;
-            margin-bottom: 0rem;
-            color: white;
-            align-self: self-end;
-        };
+        height: 103vh;
+        grid-area: a;
     }
+    #cover-photo-text-container {
+        grid-area: a;
+        z-index: 1;
+        margin-bottom: 0.75rem;
+        color: white;
+        align-self: self-end;
+        display: flex;
+        flex-flow: column;
+        #arrow-container { 
+            height: 2.5rem;
+        }
+    };
 }
 
 @media (orientation: portrait){

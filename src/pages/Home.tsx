@@ -22,17 +22,16 @@ export const Home = () => {
             <div id="cover-photo" style={
                 { backgroundImage: `url(${coverPhotoUrl})` }
             }>
-                {/* <img src={coverPhotoUrl} alt="cover photo" id="home-cover-photo"/> */}
-                <div id="text-container">
-                    <p id="home-title">scroll down for more treats :)</p>
-                    <div id="arrow-container">
-                        <img src={downarrow} alt="down arrow" id="down-arrow" style={ {
-                            animation: "bounce 2s infinite",
-                            width: "auto",
-                            height: "100%",
-                            marginBottom: "-1rem",
-                        } }/>
-                    </div>
+            </div>
+            <div id="cover-photo-text-container">
+                <p id="home-title">scroll down for more treats :)</p>
+                <div id="arrow-container">
+                    <img src={downarrow} alt="down arrow" id="down-arrow" style={ {
+                        animation: "bounce 2s infinite",
+                        width: "auto",
+                        height: "100%",
+                        marginBottom: "-1rem",
+                    } }/>
                 </div>
             </div>
             <Work/>
