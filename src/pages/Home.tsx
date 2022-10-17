@@ -3,6 +3,7 @@ import { imageUrlFor, useMiscellaneousQuery } from '../redux/sanityApi';
 import { match } from 'ts-pattern';
 import { Work } from '../features/work/workIndex';
 import { useEffect, useState } from 'react';
+import downarrow from '../assets/icons8-down-96.png';
 
 export const Home = () => {
     
@@ -14,12 +15,25 @@ export const Home = () => {
             .with(true, () => setCoverPhotoUrl(imageUrlFor(data?.coverPhoto).url()))
             .with(false, () => null)
             .run();
-    }, [isSuccess, data])
+    }, [ isSuccess, data ])
 
     return (
-        <div id="home">
-            <div id="home-cover-photo-container">
-                <img src={coverPhotoUrl} alt="cover photo" id="home-cover-photo"/>
+        <div id="home-container">
+            <div id="cover-photo" style={
+                { backgroundImage: `url(${coverPhotoUrl})` }
+            }>
+                {/* <img src={coverPhotoUrl} alt="cover photo" id="home-cover-photo"/> */}
+                <div id="text-container">
+                    <p id="home-title">scroll down for more treats :)</p>
+                    <div id="arrow-container">
+                        <img src={downarrow} alt="down arrow" id="down-arrow" style={ {
+                            animation: "bounce 2s infinite",
+                            width: "auto",
+                            height: "100%",
+                            marginBottom: "-1rem",
+                        } }/>
+                    </div>
+                </div>
             </div>
             <Work/>
         </div>

@@ -1,15 +1,30 @@
 
 @media (orientation: landscape){
     #home-container{
-        width: 100%;
-        height: 60vh;
+        width: 90vw;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-flow: column nowrap;
+        top: -20vh;
+        position: relative;
     }
-    #splash-video{
-        height: 35rem;
-        width: 40rem;
+    #cover-photo{
+        left: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        max-width: 100vw;
+        position: relative;
+        right: 50%;
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        grid-template-areas:"a";
+        > #text-container {
+            grid-area: a;
+            z-index: 1;
+            margin-bottom: 0rem;
+            color: white;
+            align-self: self-end;
+        };
     }
 }
 
@@ -20,7 +35,7 @@
         justify-content: center;
         align-items: center;
     }
-    #splash-video{
+    #cover-photo-container{
         height: 35rem;
         width: 40rem;
     }

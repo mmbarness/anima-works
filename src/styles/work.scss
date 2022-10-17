@@ -1,8 +1,9 @@
 #work-container{
+    width: 100%;
     display: flex;
     flex-flow: column;
     align-items: center;
-    p{
+    p {
         color:#52a376;
         font-size: calc((2 - 1) * 1vw + 1rem);
     }
@@ -13,9 +14,9 @@
 
 @media (orientation: landscape){
     #video-container{
+        width: 100%;
         display: grid;
         grid-template-columns: 33% 33% 33%;
-        width: 90vw;
         justify-content: space-between;
     }
     .video-item{
