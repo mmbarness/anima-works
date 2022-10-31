@@ -25,7 +25,7 @@ export const Reel = () => {
             width: "80vw",
         }))
         .with("portrait", () => ({
-            height: "80vh",
+            width: "90vw",
         }))
         .run();
     
