@@ -38,7 +38,7 @@
             display: flex;
             justify-content: space-between;
             margin: 0px 5px;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
         }
     }
 
@@ -57,15 +57,17 @@
         padding-top:0.5rem;
         width: 90vw;
         justify-self: center;
+        margin: 5rem 0rem;
         #logo-container{
+            margin-left: 4rem;
             height: 15vh;
             width: auto;
         }
         #navBar-links{
+            margin-right: 4rem;
             display: flex;
             justify-content: space-between;
             width: 30%;
-            margin: 0px 5px
         }
     }
 }
