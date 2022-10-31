@@ -33,7 +33,7 @@
 
 @media(orientation: landscape) {
     #aspect-ratio-enforcer{
-        width: 50vw;
+        width: 80vw;
     }
     .modal-text-container{
         color: black;
@@ -58,23 +58,26 @@
 
 @media(orientation: portrait) {
     #aspect-ratio-enforcer{
-        width: 50vw;
+        width: 80vw;
     }
     .modal-text-container{
+        color: black;
+        display: flex;
+        flex-flow: column;
         list-style-type: none;
-        font-weight: 400;
+        align-items: flex-start;
+        font-weight: 200;
         font-style: italic;
-        letter-spacing: .01em;
+        letter-spacing: .03em;
         padding-left: 0px;
-        margin-top: 0.25rem;
+        margin-top: 0rem;
+        font-size:0.75rem;
         .Title-li{
-            grid-column-start: 1;
-            grid-column-end: 3;
-            font-weight:600;
+            font-weight:400;
             font-style:normal;
         }
-        li {
-            font-size: calc((2 - 1) * 1vw + .5em);
+        li{
+            margin: 2.5px 0;
         }
     }
 }

@@ -8,16 +8,20 @@
     * {
         padding: 5px;
     }
+    #ig-contact-svg-wrapper {
+        height: 8vh;
+    }
 }
 
 #contact-portrait{
+    padding-top: 10vh;
     display: flex;
     flex-flow: column;
     align-items: center;
     #contact-page-email {
         font-size: 5vw
     }
-    * {
-        padding: 5px;
+    #ig-contact-svg-wrapper {
+        height: 10vh;
     }
 }

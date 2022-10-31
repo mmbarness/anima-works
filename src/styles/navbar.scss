@@ -19,23 +19,27 @@
         display: none;
     }
     #navBar-portrait{
+        align-self: flex-start;
         grid-area: nav;
         z-index: 1000;
         display: flex;
         flex-flow: column;
         justify-content: space-around;
         padding-top: 0.5rem;
-        width: auto;
+        padding-bottom: 0.5rem;
+        width: 90vw;
+        justify-self: center;
+        #logo-container{
+            height: auto;
+            width: 15vw;
+            margin: 0 auto;
+        }
         #navBar-links{
             display: flex;
             justify-content: space-between;
-            margin: 0px 5px
+            margin: 0px 5px;
+            font-size: 1.5rem;
         }
-        div {
-            margin: .5rem 0rem;
-            font-size: 1.25rem;
-        }
-
     }
 
 }
@@ -45,6 +49,7 @@
         display: none;
     }
     #navBar-landscape{
+        height: 5vh;
         grid-area: nav;
         z-index: 1000;
         display: flex;
@@ -52,6 +57,10 @@
         padding-top:0.5rem;
         width: 90vw;
         justify-self: center;
+        #logo-container{
+            height: 15vh;
+            width: auto;
+        }
         #navBar-links{
             display: flex;
             justify-content: space-between;

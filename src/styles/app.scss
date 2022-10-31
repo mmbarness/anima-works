@@ -10,33 +10,14 @@ body{
     color: white;
 }
 
-@media(orientation:landscape) {
-    #ig-contact-svg-wrapper{
-        fill:white;
-    }
+#ig-contact-svg-wrapper{
+    fill:white;
 }
 
 @media (orientation: landscape){
     #navBar{
         height: 5%;
         margin: 0rem 0rem .5rem 0rem
-    }
-}
-
-@media(orientation:portrait) {
-    #app-container{
-        display: grid;
-        grid-template-areas:
-            "nav"
-            "main"
-            "footer";
-        min-height: 80vh;
-        width: 90%;
-        max-height: fit-content;
-        grid-template-rows: auto;
-        grid-template-columns: 100%;
-        font-family: 'Lora', serif;
-        caret-color: transparent;
     }
 }
 

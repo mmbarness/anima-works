@@ -1,14 +1,27 @@
 import '../styles/contact.scss'
 import { imageUrlFor, useMiscellaneousQuery } from '../redux/sanityApi';
-import { match } from 'ts-pattern';
-import { Work } from '../features/work/workIndex';
+import { match, P } from 'ts-pattern';
 import { useEffect, useState } from 'react';
 import downarrow from '../assets/icons8-down-96.png';
+import useScrollPosition from '../utils/scrollPosition';
+import useWindowDimensions from '../utils/windowDimensions';
 
 export const Home = () => {
     
     const { data, isSuccess } = useMiscellaneousQuery();
     const [coverPhotoUrl, setCoverPhotoUrl] = useState("");
+
+    const windowDimensions = useWindowDimensions();
+
+    const currentScrollPosition = useScrollPosition();
+
+    const displayScrollText = () => {
+        return match(windowDimensions.height - currentScrollPosition)
+            .with(P.when(x => x < 0), () => (
+                { display: "none", }
+            ))
+            .otherwise(() => ({}))
+    }
 
     useEffect(() => {
         match(isSuccess)
@@ -23,7 +36,7 @@ export const Home = () => {
                 { backgroundImage: `url(${coverPhotoUrl})` }
             }>
             </div>
-            <div id="cover-photo-text-container">
+            <div id="cover-photo-text-container" style={ displayScrollText() }>
                 <p id="home-title">scroll down for more treats :)</p>
                 <div id="arrow-container">
                     <img src={downarrow} alt="down arrow" id="down-arrow" style={ {
@@ -33,7 +46,6 @@ export const Home = () => {
                     } }/>
                 </div>
             </div>
-            {/* <Work/> */}
         </div>
     )
 

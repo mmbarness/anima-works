@@ -11,7 +11,7 @@ import {Routes} from './utils/routes';
 import { useLocation } from 'react-router-dom';
 import { match, P } from 'ts-pattern';
 import { Home } from './pages/Home';
-import { Work } from './features/work/workIndex';
+import { appContainer } from './styles/inlineStyleObjects';
 
 const App = () => {
 
@@ -53,7 +53,6 @@ const App = () => {
             zIndex: "1",
             margin: "auto",
             width: "90vw",
-            // height: "100vh",
         }))
         .run();
 
@@ -74,19 +73,9 @@ const App = () => {
     )
 
     return (
-        <div className="App" id="app-container" style={{
-            margin: "auto",
-            display: "grid",
-            gridTemplateAreas: `
-                'nav'
-                'main'
-                'footer'
-            `,
-            gridTemplateRows: `${navBarHeight} auto auto`,
-            fontFamily: "Lora, serif",
-            caretColor: "transparent",
-            height: "100vh",
-        }}>
+        <div className="App" id="app-container" style={
+            appContainer.useStyle(currentOrientation)({navBarHeight})
+        }>
         <NavBar/>
         { renderHome() }
         <div id="main-navigation" style={ mainNavStyles }>
