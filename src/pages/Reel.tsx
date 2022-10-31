@@ -18,13 +18,20 @@ export const Reel = () => {
             console.log("error fetching url")
         }
     },[isError])
+
+    const style = match(currentOrientation)
+        .with("landscape", () => ({
+            height: "60vh",
+            width: "80vw",
+        }))
+        .with("portrait", () => ({
+            height: "80vh",
+        }))
+        .run();
     
     return match(isSuccess)
         .with(true, () => (
-            <div id="reel-wrapper" style={{
-                height: "60vh",
-                width: "80vw",
-            }}>
+            <div id="reel-wrapper" style={ style }>
                 <ReactPlayer
                     url={data.reelLink}
                     className={currentOrientation === 'landscape' ? "splash-desktop" : "splash-mobile"}
