@@ -15,7 +15,7 @@ export const appContainer = {
             'main'
             'footer'
         `,
-        gridRowGap: "0rem",
+        gridRowGap: "1rem",
         gridTemplateRows: `${params.navBarHeight} auto auto`,
         fontFamily: "Lora, serif",
         caretColor: "transparent",
@@ -24,7 +24,7 @@ export const appContainer = {
     portrait: () => ({
         margin: "auto",
         display: "grid",
-        gridRowGap: "2.5rem",
+        gridRowGap: "1.5rem",
         gridTemplateAreas: `
             'nav'
             'main'
