@@ -44,6 +44,7 @@ const App = () => {
             gridArea: "main",
             zIndex: "1",
             margin: "auto",
+            paddingTop: "-2rem",
             width: "90vw",
             backgroundColor: "black",
         }))

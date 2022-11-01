@@ -21,15 +21,6 @@ body{
     }
 }
 
-#main-navigation{
-    display: flex;
-    justify-content: center;
-    grid-area: main;
-    z-index: 1;
-    margin: auto;
-    width: 90vw;
-}
-
 #footer{
     grid-area:footer;
 }
