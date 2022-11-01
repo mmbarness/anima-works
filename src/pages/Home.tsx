@@ -64,7 +64,6 @@ export const Home = () => {
                         backgroundImage: `url(${coverPhotoUrl})`,
                         backgroundSize: 'contain',
                         backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center",
                         width: "100vw",
                     }}>
                         <div id="cover-photo-text-container" style={ displayScrollText() }>
