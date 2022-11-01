@@ -35,7 +35,6 @@ export const ImagePattern = {
         "_ref": P.string,
         "_type": P.string,
     },
-    "alt": P.optional(P.string),
 }
 
 export const coreSanityResultPattern = {
@@ -51,7 +50,7 @@ export const HomePageMatchPattern = {
     "reelLink": P.string,
 }
 
-export const aboutPageMatchPattern = {
+export const aboutPagePattern = {
     ...coreSanityResultPattern,
     "email": P.string,
     "instagram": P.string,
@@ -77,8 +76,9 @@ export const MiscellaneousPattern = {
     "companyInstagram": P.string,
     "companyLogo": ImagePattern,
     "coverPhoto": ImagePattern,
+    "coverPhotoLandscape": ImagePattern,
+    "coverPhotoPortrait": ImagePattern,
 }
-
 
 export interface AboutInfo extends CoreResponse{
     aboutPageImage: SanityImage,
@@ -138,10 +138,12 @@ export interface ReelPage {
 }
 
 export interface Miscellaneous {
-    coverPhoto: SanityImage,
     companyEmail: string,
     companyInstagram: string,
-    companyLogo: SanityImage
+    companyLogo: SanityImage,
+    coverPhoto: SanityImage,
+    coverPhotoLandscape: SanityImage,
+    coverPhotoPortrait: SanityImage,
 }
 
 export interface QueryResponse<ResultType> extends Query {

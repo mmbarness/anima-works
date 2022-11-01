@@ -1,9 +1,9 @@
 #footer{
     align-self:flex-end;
     display: flex;
-    flex-flow: column;
-    // margin: auto;
+    flex-flow: column;  
     align-items: center;
+    z-index: 1;
     *{
         padding: 5px;
     }

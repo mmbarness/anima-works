@@ -6,7 +6,7 @@ import { useLazyAboutInfoQuery, useLazyMiscellaneousQuery } from './redux/sanity
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import useMediaQuery from './useMediaQuery';
-import contextSlice, { InitialState } from './contextSlice';
+import contextSlice, { InitialState } from './redux/contextSlice';
 import {Routes} from './utils/routes';
 import { useLocation } from 'react-router-dom';
 import { match, P } from 'ts-pattern';
@@ -45,6 +45,7 @@ const App = () => {
             zIndex: "1",
             margin: "auto",
             width: "90vw",
+            backgroundColor: "black",
         }))
         .with(P._, () => ({
             display: "flex",
