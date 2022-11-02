@@ -30,7 +30,7 @@ export const Home = () => {
             .with(true, () => setCoverPhotoUrl(
                 currentOrientation === "landscape" ? 
                     imageUrlFor(data?.coverPhotoLandscape).url()
-                    : imageUrlFor(data?.coverPhotoPortrait).url())
+                    : imageUrlFor(data?.coverPhotoPortrait).width(2000).url())
                     )
             .with(false, () => null)
             .run();
@@ -62,7 +62,7 @@ export const Home = () => {
                 (
                     <div id="home-container" style={{ 
                         backgroundImage: `url(${coverPhotoUrl})`,
-                        backgroundSize: 'contain',
+                        backgroundSize: 'cover',
                         backgroundRepeat: "no-repeat",
                         width: "100vw",
                     }}>

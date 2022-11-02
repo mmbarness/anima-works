@@ -37,11 +37,6 @@ const App = () => {
         .with(P._, () => "10vh")
         .run();
 
-    const marginTop = match(currentOrientation)
-        .with("landscape", () => "0rem")
-        .with("portrait", () => "-2.5rem")
-        .run();
-
     const mainNavStyles = match(location.pathname)
         .with("/", () => ({
             display: "flex",

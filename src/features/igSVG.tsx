@@ -1,14 +1,6 @@
 import { match, P } from "ts-pattern"
-import { useAppSelector } from "../redux/hooks"
 
 export const IGsvg = ({instagramLink}:{instagramLink: string | undefined}) => {
-
-    const { currentOrientation } = useAppSelector(state => state.contextSlice);
-
-    const dimensions = match(currentOrientation)
-        .with("landscape", () => ({}))
-        .with("portrait", () => ({}))
-        .run();
 
     return match(instagramLink)
         .with("do not render", () => (
