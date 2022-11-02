@@ -37,7 +37,7 @@ const App = () => {
         .with(P._, () => "10vh")
         .run();
 
-    const negativePadding = match(currentOrientation)
+    const marginTop = match(currentOrientation)
         .with("landscape", () => "0rem")
         .with("portrait", () => "-2.5rem")
         .run();
@@ -46,22 +46,20 @@ const App = () => {
         .with("/", () => ({
             display: "flex",
             justifyContent: "center",
+            justifySelf: "center",
             gridArea: "main",
             zIndex: "1",
-            margin: "auto",
             width: "90vw",
             backgroundColor: "black",
-            paddingTop: negativePadding,
         }))
         .with(P._, () => ({
             display: "flex",
             justifyContent: "center",
+            justifySelf: "center",
             gridArea: "main",
             zIndex: "1",
-            margin: "auto",
             width: "90vw",
             backgroundColor: "black",
-            paddingTop: negativePadding,
         }))
         .run();
 
