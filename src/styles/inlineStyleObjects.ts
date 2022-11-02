@@ -16,7 +16,7 @@ export const appContainer = {
             'footer'
         `,
         gridRowGap: "1rem",
-        gridTemplateRows: `${params.navBarHeight} auto auto`,
+        gridTemplateRows: `${params.navBarHeight} auto 10vh`,
         fontFamily: "Lora, serif",
         caretColor: "transparent",
         height: "100vh",

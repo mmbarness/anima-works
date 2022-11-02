@@ -54,6 +54,7 @@ const App = () => {
             gridArea: "main",
             zIndex: "1",
             width: "90vw",
+            // height: "100vh",
             backgroundColor: "black",
         }))
         .run();
