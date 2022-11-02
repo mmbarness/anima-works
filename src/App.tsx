@@ -37,6 +37,11 @@ const App = () => {
         .with(P._, () => "10vh")
         .run();
 
+    const negativePadding = match(currentOrientation)
+        .with("landscape", () => "0rem")
+        .with("portrait", () => "-2.5rem")
+        .run();
+
     const mainNavStyles = match(location.pathname)
         .with("/", () => ({
             display: "flex",
@@ -44,9 +49,9 @@ const App = () => {
             gridArea: "main",
             zIndex: "1",
             margin: "auto",
-            paddingTop: "-2rem",
             width: "90vw",
             backgroundColor: "black",
+            paddingTop: negativePadding,
         }))
         .with(P._, () => ({
             display: "flex",
@@ -55,6 +60,8 @@ const App = () => {
             zIndex: "1",
             margin: "auto",
             width: "90vw",
+            backgroundColor: "black",
+            paddingTop: negativePadding,
         }))
         .run();
 
