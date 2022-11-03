@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import imageUrlBuilder from '@sanity/image-url';
-import { FormattedAboutInfo, GearItem, SanityImage, WorkItem, ReelPage, QueryResponse, Miscellaneous } from '../types/sanityTypes';
+import { match, P } from 'ts-pattern';
+import { FormattedAboutInfo, GearItem, SanityImage, WorkItem, ReelPage, QueryResponse, Miscellaneous, ImagePattern } from '../types/sanityTypes';
 import { apiQueries } from '../utils/apiQueries';
 import { apiResponseTransforms } from '../utils/apiResponseTransforms';
 
@@ -18,7 +19,14 @@ export const baseSanityClient = sanityClient({
 
 const imageBuilder = imageUrlBuilder(baseSanityClient);
 
-export const imageUrlFor = (source: SanityImage) => imageBuilder.image(source);
+export const imageUrlFor = (source: SanityImage) => (
+    match(source)
+        .with(ImagePattern, source => imageBuilder.image(source))
+        .with(P._, () => {
+            throw new Error('Invalid image source')
+        })
+        .run()
+)
 
 export const sanityApi = createApi({
     reducerPath: 'sanity',

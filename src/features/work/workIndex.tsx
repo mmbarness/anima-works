@@ -9,19 +9,28 @@ export const Work = () => {
 
     const { currentOrientation } = useAppSelector(state => state.contextSlice)
 
-    const { data } = useWorkItemsQuery(); 
+    const { data } = useWorkItemsQuery();
 
     const renderItems = useCallback(
         () => (
             data ? 
                 <div id="video-container">
-                    { data.map((video:WorkItem, i:number) => 
+                    { data.map((video:WorkItem, i:number) => (
                         video.thumbnail ? 
-                        <Suspense key={video._id} fallback={<div key={video._id}> </div>}>
-                            <LazyWorkItem key={video._id} video={video} orientation={currentOrientation} i={i}/>
+                        <Suspense
+                            key={video._id} 
+                            fallback={
+                                <div key={video._id}> </div>
+                            }>
+                            <LazyWorkItem
+                                key={video._id}
+                                video={video}
+                                orientation={currentOrientation}
+                                i={i}
+                            />
                         </Suspense>
                         : null
-                    ) }
+                    )) }
                 </div>
             : <div id="work-index-loading-div">loading...</div>
         ),

@@ -5,15 +5,17 @@ import ReactPlayer from "react-player";
 import Carousel from "react-material-ui-carousel"
 import { WorkItem } from "../../types/sanityTypes";
 import { useAppSelector } from "../../redux/hooks";
+import { match } from 'ts-pattern';
+
 
 const modalStyle = {
     position: 'absolute' as const,
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "72.5vw",
+    // width: "72.5vw",
     bgcolor: '#f5f5f5',
-    boxShadow: 24,
+    boxShadow: 0,
     borderRadius: 1,
     p: 1,
     "&:focus": {
@@ -33,7 +35,10 @@ export const WorkItemModal = (params: {
 
     const renderVideo = () => (
         <Paper 
-            elevation={10}
+            elevation={1}
+            style={{
+                maxHeight: "70vh",
+            }}
         >
             <div id="aspect-ratio-enforcer">
                 <ReactPlayer
@@ -48,38 +53,73 @@ export const WorkItemModal = (params: {
             </div>
         </Paper>
     )
+
+    const still = (params: {url: string, orientation: typeof currentOrientation}) => (
+        match(currentOrientation)
+            .with("landscape", () => (
+                <img style={ {
+                    borderRadius: '0.5rem',
+                    top: "0",
+                    left: "0",
+                    position:"absolute",
+                    width: "80vw",
+                    height: "auto",
+                    maxWidth: "100%",
+                    maxHeight: "100%"
+                }  } src={params.url} alt="still"/>
+            ))
+            .with("portrait", () => (
+                <img style={ {
+                    borderRadius: '0.5rem',
+                    top: "0",
+                    left: "0",
+                    position:"absolute",
+                    width: "auto",
+                    height: "auto",
+                    maxWidth: "100%",
+                    maxHeight: "100%"
+                }  } src={params.url} alt="still"/>
+            ))
+            .run()
+    );
         
     const renderStills = () => (
         <div className="stills-carousel">
             <Carousel
                 autoPlay={false}
                 sx={{
-                    minWidth:"72.5vw",
+                    minWidth:"80vw",
                     width: "auto",
                     height: "auto",
                     maxWidth: "100%",
                     maxHeight: "100%"
                 }}
+                indicatorIconButtonProps={{
+                    style: {
+                        color: 'grey'       // 3
+                    }
+                }}
+                indicatorContainerProps={{
+                    style: {
+                        backgroundColor: 'white', // 1
+                        color: 'black',
+                        marginTop: '0rem', // 5
+                    }
+                }}
                 >
                 {
                     stills.map((url:string, i) => (        
-                        <Paper 
-                            key={i} 
-                            elevation={10}
-                        >
-                            <div className="still-aspect-ratio-enforcer">
-                                <img style={ {
-                                    borderRadius: '0.5rem',
-                                    top: 0,
-                                    left: 0,
-                                    position:"absolute",
-                                    width: "72.5vw",
-                                    height: "auto",
-                                    maxWidth: "100%",
-                                    maxHeight: "100%"
-                                } } src={url} alt="still"/>
-                            </div>
-                        </Paper>
+                        <div id="aspect-ratio-enforcer">
+                            <Paper 
+                                key={i} 
+                                elevation={1}
+                                // style={{
+                                //     height: "50vh",
+                                // }}
+                            >
+                                {still({url, orientation: currentOrientation})}
+                            </Paper>
+                        </div>
                     ))
                 }
             </Carousel>
@@ -96,21 +136,25 @@ export const WorkItemModal = (params: {
             aria-describedby="modal-modal-description"
         >
             <Box sx={modalStyle}>
-                <div id="modal-content-container">
+                <div id="modal-content-container"             
+                style={{
+                    maxWidth: "90vw",
+                }}
+            >
                     { currentRenderFn }
                     <div id="toggle-modal-view">
                         <Button 
                             variant="outlined" 
                             onClick={(e) => { e.preventDefault(); setCurrentRenderFn(renderVideo) }}
                             style={{
-                                margin:"0rem 1rem 0rem 0rem"
+                                margin:"0rem .5rem 0rem 0rem"
                             }}
                         >Video</Button>
                         <Button 
                             variant="outlined" 
                             onClick={(e) => { e.preventDefault(); setCurrentRenderFn(renderStills) }}
                             style={{
-                                margin:"0rem 0rem 0rem 1rem"
+                                margin:"0rem 0rem 0rem .5rem"
                             }}
                             >
                                 Stills

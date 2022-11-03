@@ -1,7 +1,7 @@
 import type { WorkItem as WorkItemAsset } from "../../types/sanityTypes"
 import { match, P } from "ts-pattern";
 import { WorkItemModal } from "./workItemModal";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 type Props = {
     video: WorkItemAsset,
@@ -9,12 +9,14 @@ type Props = {
     i: number
 }
 
-const WorkItem = ({video, orientation}: Props) => {
+const WorkItem = ({ video, orientation }: Props) => {
 
     const [ open, setOpen ] = useState(false);
     
+    const itemRef = useRef<HTMLDivElement>(null as HTMLDivElement);
+    
     return(
-        <div className="video-item" key={video._id}>
+        <div className="video-item" key={video._id} ref={itemRef}>
             <img alt="video thumbnail" 
                 className={
                     match(orientation)

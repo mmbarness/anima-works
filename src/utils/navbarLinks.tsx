@@ -17,7 +17,7 @@ export default function navbarLinks (pathname: string) {
                 to={route.path} 
                 className={underlineMe(route.path, pathname)}
             >
-                {route.pathName}
+                {route.pathName.toLocaleUpperCase()}
             </Link>
         )
     })

@@ -1,10 +1,10 @@
 #navBar-links {
-    color:#52a376;
+    color:white;
     a {
-        color:#52a376;
+        color:white;
     }
     a:visited {
-        color:#52a376;
+        color:white;
     }
     .underline-me{
         text-decoration-line: underline;
@@ -19,23 +19,27 @@
         display: none;
     }
     #navBar-portrait{
+        align-self: flex-start;
         grid-area: nav;
         z-index: 1000;
         display: flex;
         flex-flow: column;
         justify-content: space-around;
         padding-top: 0.5rem;
-        width: auto;
+        padding-bottom: 0.5rem;
+        width: 90vw;
+        justify-self: center;
+        #logo-container{
+            height: auto;
+            width: 15vw;
+            margin: 0.5rem auto;
+        }
         #navBar-links{
             display: flex;
             justify-content: space-between;
-            margin: 0px 5px
-        }
-        div {
-            margin: .5rem 0rem;
+            margin: 0px 5px;
             font-size: 1.25rem;
         }
-
     }
 
 }
@@ -45,16 +49,26 @@
         display: none;
     }
     #navBar-landscape{
+        height: 5vh;
         grid-area: nav;
         z-index: 1000;
         display: flex;
         justify-content:space-between;
         padding-top:0.5rem;
+        width: 90vw;
+        justify-self: center;
+        margin: 5rem 0rem;
+        #logo-container{
+            margin-left: 4rem;
+            height: 15vh;
+            width: auto;
+            align-self: center;
+        }
         #navBar-links{
+            margin-right: 4rem;
             display: flex;
             justify-content: space-between;
             width: 30%;
-            margin: 0px 5px
         }
     }
 }

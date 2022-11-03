@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import contextSlice from '../contextSlice';
+import contextSlice from './contextSlice';
 import { sanityApi } from './sanityApi';
 
 export const store = configureStore({

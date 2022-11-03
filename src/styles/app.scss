@@ -6,24 +6,12 @@
 }
 
 body{
-    background-color: white
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
 }
 
-@media(orientation:landscape) {
-    #app-container{
-        margin:auto;
-        display: grid;
-        grid-template-areas:
-            "nav"
-            "main"
-            "footer";
-        max-height: fit-content;
-        min-height: 100vh;
-        width: 90vw;
-        grid-template-rows: auto;
-        font-family: 'Lora', serif;
-        caret-color: transparent;
-    }
+#ig-contact-svg-wrapper{
+    fill:white;
 }
 
 @media (orientation: landscape){
@@ -31,31 +19,6 @@ body{
         height: 5%;
         margin: 0rem 0rem .5rem 0rem
     }
-}
-
-@media(orientation:portrait) {
-    #app-container{
-        display: grid;
-        grid-template-areas:
-            "nav"
-            "main"
-            "footer";
-        min-height: 80vh;
-        width: 90%;
-        max-height: fit-content;
-        grid-template-rows: auto;
-        grid-template-columns: 100%;
-        font-family: 'Lora', serif;
-        caret-color: transparent;
-    }
-}
-
-#main-navigation{
-    display: flex;
-    justify-content: center;
-    grid-area: main;
-    z-index: 1;
-    margin: 1rem 0rem;
 }
 
 #footer{
