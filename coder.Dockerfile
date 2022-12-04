@@ -1,13 +1,13 @@
-FROM codercom/enterprise-base:ubuntu as coder
+FROM codercom/enterprise-node:ubuntu
 
-FROM node:17-alpine
+USER root
 
-COPY --from=coder . .
-
-USER dev
+RUN mkdir -p /home/dev/anima-works
 
 WORKDIR /home/dev/anima-works
 
 COPY . .
 
-RUN yarn
+RUN npm install
+
+#docker build -t mmbarness/animaworks_workspace -f coder.Dockerfile .
