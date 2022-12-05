@@ -3,8 +3,7 @@ FROM codercom/enterprise-node:ubuntu
 USER root
 
 # Copy source into container
-RUN mkdir -p /home/coder/anima-works
-WORKDIR /home/coder/anima-works
+WORKDIR /usr/src/anima-works
 COPY . .
 
 RUN npm install
