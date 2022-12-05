@@ -1,13 +1,11 @@
 FROM codercom/enterprise-node:ubuntu
 
-USER root
+USER coder
 
-RUN mkdir -p /home/dev/anima-works
+WORKDIR /home/coder
+RUN git clone https://github.com/mmbarness/anima-works.git
 
-WORKDIR /home/dev/anima-works
-
-COPY . .
-
+WORKDIR /home/coder/anima-works
 RUN npm install
 
 #docker build -t mmbarness/animaworks_workspace -f coder.Dockerfile .
