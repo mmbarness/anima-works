@@ -29,5 +29,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          ags: mmbarness/animaworks_workspace:${{ github.event.inputs.tag }}
+          tags: mmbarness/animaworks_workspace:${{ github.event.inputs.tag }}
           file: 'coder/Dockerfile'
