@@ -1,4 +1,4 @@
-name: build-workspace-imaage
+name: build-coder-workspace-image
 
 on:
   workflow_dispatch:
