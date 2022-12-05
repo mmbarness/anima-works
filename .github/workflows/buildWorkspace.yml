@@ -2,6 +2,11 @@ name: build-coder-workspace-image
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to build'
+        required: true
+        default: 'latest'
 
 jobs:
   docker:
@@ -24,5 +29,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: mmbarness/animaworks_workspace
+          ags: mmbarness/animaworks_workspace:${{ github.event.inputs.tag }}
           file: 'coder/Dockerfile'
