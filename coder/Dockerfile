@@ -2,10 +2,9 @@ FROM codercom/enterprise-node:ubuntu
 
 USER root
 
-RUN mkdir -p /home/dev/anima-works
-
-WORKDIR /home/dev/anima-works
-
+# Copy source into container
+RUN mkdir -p /home/coder/anima-works
+WORKDIR /home/coder/anima-works
 COPY . .
 
 RUN npm install
