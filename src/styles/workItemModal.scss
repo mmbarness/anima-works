@@ -33,7 +33,7 @@
 
 @media(orientation: landscape) {
     #aspect-ratio-enforcer{
-        width: 80vw;
+        min-width: 60vw;
     }
     .modal-text-container{
         color: black;
