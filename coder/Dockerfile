@@ -1,10 +1,9 @@
 FROM codercom/enterprise-node:ubuntu
 
-USER root
+USER coder
 
-# Copy source into container
-WORKDIR /usr/src/anima-works
-COPY . .
+WORKDIR /home/coder
+RUN git clone https://github.com/mmbarness/anima-works.git
 
 RUN npm install
 
