@@ -19,12 +19,12 @@ export const routesObj = [
         element: <WorkPage/>,
         renderInNavbar: false,
     },
-    { 
-        path: "/reel", 
-        pathName: "reel",
-        element: <Reel />,
-        renderInNavbar: true,
-    },
+    // { 
+    //     path: "/reel", 
+    //     pathName: "reel",
+    //     element: <Reel />,
+    //     renderInNavbar: true,
+    // },
     { 
         path: "/gear", 
         pathName: "gear",
