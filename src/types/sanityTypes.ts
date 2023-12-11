@@ -2,7 +2,7 @@ import { P } from "ts-pattern";
 import { credits } from "./assetTypes";
 import type {
     PortableTextBlock,
-  } from '@portabletext/types'  
+  } from '@portabletext/types'
 
 export type SanityImage = {
     _type: string;
@@ -10,7 +10,7 @@ export type SanityImage = {
         _ref: string;
         _type: string;
     }
-    alt?: string, 
+    alt?: string,
 }
 
 export interface WorkItem {
@@ -19,14 +19,14 @@ export interface WorkItem {
     nonprofitInstitution?: {name: string},
     company?: {name: string},
     embedCode: string,
-    link: string, 
+    link: string,
     source: string,
     thumbnail: string | null,
     stills: Array<string> | null,
     titleOfWork: string,
     titleToDisplay: string,
     videoType:"musicVideo"|"nonprofit"|"commercial",
-    credits: Array<credits>,
+    credits: Array<credits> | null,
 }
 
 export const ImagePattern = {

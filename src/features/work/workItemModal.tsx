@@ -34,7 +34,7 @@ export const WorkItemModal = (params: {
     const { credits, stills } = params.video;
 
     const renderVideo = () => (
-        <Paper 
+        <Paper
             elevation={1}
             style={{
                 maxHeight: "70vh",
@@ -43,7 +43,7 @@ export const WorkItemModal = (params: {
             <div id="aspect-ratio-enforcer">
                 <ReactPlayer
                     url={params.video.link}
-                    className={`modal-video ${currentOrientation}`} 
+                    className={`modal-video ${currentOrientation}`}
                     width="100%"
                     height="100%"
                     light={params.video.thumbnail ? params.video.thumbnail : true}
@@ -82,7 +82,7 @@ export const WorkItemModal = (params: {
             ))
             .run()
     );
-        
+
     const renderStills = () => (
         <div className="stills-carousel">
             <Carousel
@@ -108,10 +108,10 @@ export const WorkItemModal = (params: {
                 }}
                 >
                 {
-                    stills.map((url:string, i) => (        
+                    stills.map((url:string, i) => (
                         <div id="aspect-ratio-enforcer">
-                            <Paper 
-                                key={i} 
+                            <Paper
+                                key={i}
                                 elevation={1}
                                 // style={{
                                 //     height: "50vh",
@@ -136,22 +136,22 @@ export const WorkItemModal = (params: {
             aria-describedby="modal-modal-description"
         >
             <Box sx={modalStyle}>
-                <div id="modal-content-container"             
+                <div id="modal-content-container"
                 style={{
                     maxWidth: "90vw",
                 }}
             >
                     { currentRenderFn }
                     <div id="toggle-modal-view">
-                        <Button 
-                            variant="outlined" 
+                        <Button
+                            variant="outlined"
                             onClick={(e) => { e.preventDefault(); setCurrentRenderFn(renderVideo) }}
                             style={{
                                 margin:"0rem .5rem 0rem 0rem"
                             }}
                         >Video</Button>
-                        <Button 
-                            variant="outlined" 
+                        <Button
+                            variant="outlined"
                             onClick={(e) => { e.preventDefault(); setCurrentRenderFn(renderStills) }}
                             style={{
                                 margin:"0rem 0rem 0rem .5rem"
@@ -163,7 +163,7 @@ export const WorkItemModal = (params: {
                 </div>
                 <ul className="modal-text-container">
                     <li className="modal-text Title-li" key={`title-${params.video._id}`}>{params.video.titleToDisplay}</li>
-                    {credits.map((credit) => (
+                    {credits && credits.map((credit) => (
                         <li key={`${credit.title}-${params.video._id}`} className={`video-item-text ${credit.title}-li`}>{credit.title}: {credit.Name}</li>
                     ))}
                 </ul>
