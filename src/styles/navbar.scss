@@ -31,8 +31,13 @@
         justify-self: center;
         #logo-container{
             height: auto;
-            width: 15vw;
+            width: min(15vw, 100px);
             margin: 0.5rem auto;
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
         }
         #navBar-links{
             display: flex;
