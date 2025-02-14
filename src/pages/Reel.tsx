@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import {default as _ReactPlayer} from 'react-player';
-import {ReactPlayerProps} from "react-player/types/lib";
+import { default as _ReactPlayer } from 'react-player';
+import { ReactPlayerProps } from "react-player/types/lib";
 import { match } from 'ts-pattern';
 import { useAppSelector } from '../redux/hooks';
 import { useReelPageQuery } from '../redux/sanityApi';
@@ -17,7 +17,7 @@ export const Reel = () => {
         if (isError) {
             console.log("error fetching url")
         }
-    },[isError])
+    }, [isError])
 
     const style = match(currentOrientation)
         .with("landscape", () => ({
@@ -28,12 +28,12 @@ export const Reel = () => {
             width: "90vw",
         }))
         .run();
-    
+
     return match(isSuccess)
         .with(true, () => (
-            <div id="reel-wrapper" style={ style }>
+            <div id="reel-wrapper" style={style}>
                 <ReactPlayer
-                    url={data.reelLink}
+                    url={data?.reelLink ?? ""}
                     className={currentOrientation === 'landscape' ? "splash-desktop" : "splash-mobile"}
                     id="splash-video"
                     width="100%"
@@ -47,5 +47,5 @@ export const Reel = () => {
             <div> </div>
         ))
         .run()
-    
+
 }

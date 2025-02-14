@@ -17,7 +17,7 @@ export const WorkPage = () => {
             return 'invalid_id'
         })
         .run()
-        
+
     const { video } = useWorkItemsQuery(undefined, {
         selectFromResult: ({ data }) => ({
             video: data?.find((video) => video._id === videoId)
@@ -35,17 +35,17 @@ export const WorkPage = () => {
                     }}
                 >
                     {
-                        video.stills.map((url:string, i) => (        
+                        video.stills?.map((url: string, i) => (
                             <Paper key={i} >
-                                <img style={ {
+                                <img style={{
                                     'borderRadius': '0.5rem',
                                     'width': WORK_ITEM_STILLS__WIDTH
-                                } } src={url} alt="still"/>
+                                }} src={url} alt="still" />
                             </Paper>
                         ))
                     }
                 </Carousel>
             </div>
-        : <div></div>
+            : <div></div>
     )
 }

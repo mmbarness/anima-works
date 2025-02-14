@@ -7,7 +7,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "skipLibCheck": true,
     "lib": [
       "dom",
