@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface InitialState {
-    aboutImageUrl: string,
-    companyLogoUrl: string,
+    aboutImageUrl: string | null,
+    companyLogoUrl: string | null,
     currentOrientation: "portrait" | "landscape",
     matchAgainst: "landscape",
     showScrollText: boolean,
@@ -13,8 +13,8 @@ export interface InitialState {
 }
 
 const initialState: InitialState = {
-    aboutImageUrl: "",
-    companyLogoUrl: "",
+    aboutImageUrl: null,
+    companyLogoUrl: null,
     currentOrientation: window.matchMedia("(orientation: portrait)").matches ? 'portrait' : 'landscape',
     matchAgainst: "landscape",
     showScrollText: true,

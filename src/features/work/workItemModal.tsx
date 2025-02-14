@@ -54,31 +54,31 @@ export const WorkItemModal = (params: {
         </Paper>
     )
 
-    const still = (params: {url: string, orientation: typeof currentOrientation}) => (
+    const still = (params: { url: string, orientation: typeof currentOrientation }) => (
         match(currentOrientation)
             .with("landscape", () => (
-                <img style={ {
+                <img style={{
                     borderRadius: '0.5rem',
                     top: "0",
                     left: "0",
-                    position:"absolute",
+                    position: "absolute",
                     width: "80vw",
                     height: "auto",
                     maxWidth: "100%",
                     maxHeight: "100%"
-                }  } src={params.url} alt="still"/>
+                }} src={params.url} alt="still" />
             ))
             .with("portrait", () => (
-                <img style={ {
+                <img style={{
                     borderRadius: '0.5rem',
                     top: "0",
                     left: "0",
-                    position:"absolute",
+                    position: "absolute",
                     width: "auto",
                     height: "auto",
                     maxWidth: "100%",
                     maxHeight: "100%"
-                }  } src={params.url} alt="still"/>
+                }} src={params.url} alt="still" />
             ))
             .run()
     );
@@ -88,7 +88,7 @@ export const WorkItemModal = (params: {
             <Carousel
                 autoPlay={false}
                 sx={{
-                    minWidth:"80vw",
+                    minWidth: "80vw",
                     width: "auto",
                     height: "auto",
                     maxWidth: "100%",
@@ -106,18 +106,18 @@ export const WorkItemModal = (params: {
                         marginTop: '0rem', // 5
                     }
                 }}
-                >
+            >
                 {
-                    stills.map((url:string, i) => (
+                    stills?.map((url: string, i) => (
                         <div id="aspect-ratio-enforcer">
                             <Paper
                                 key={i}
                                 elevation={1}
-                                // style={{
-                                //     height: "50vh",
-                                // }}
+                            // style={{
+                            //     height: "50vh",
+                            // }}
                             >
-                                {still({url, orientation: currentOrientation})}
+                                {still({ url, orientation: currentOrientation })}
                             </Paper>
                         </div>
                     ))
@@ -126,7 +126,7 @@ export const WorkItemModal = (params: {
         </div>
     )
 
-    const [ currentRenderFn, setCurrentRenderFn ] = useState(renderVideo)
+    const [currentRenderFn, setCurrentRenderFn] = useState(renderVideo)
 
     return (
         <Modal
@@ -137,28 +137,28 @@ export const WorkItemModal = (params: {
         >
             <Box sx={modalStyle}>
                 <div id="modal-content-container"
-                style={{
-                    maxWidth: "90vw",
-                }}
-            >
-                    { currentRenderFn }
+                    style={{
+                        maxWidth: "90vw",
+                    }}
+                >
+                    {currentRenderFn}
                     <div id="toggle-modal-view">
                         <Button
                             variant="outlined"
                             onClick={(e) => { e.preventDefault(); setCurrentRenderFn(renderVideo) }}
                             style={{
-                                margin:"0rem .5rem 0rem 0rem"
+                                margin: "0rem .5rem 0rem 0rem"
                             }}
                         >Video</Button>
                         <Button
                             variant="outlined"
                             onClick={(e) => { e.preventDefault(); setCurrentRenderFn(renderStills) }}
                             style={{
-                                margin:"0rem 0rem 0rem .5rem"
+                                margin: "0rem 0rem 0rem .5rem"
                             }}
-                            >
-                                Stills
-                            </Button>
+                        >
+                            Stills
+                        </Button>
                     </div>
                 </div>
                 <ul className="modal-text-container">

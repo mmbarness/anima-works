@@ -11,27 +11,27 @@ type Props = {
 
 const WorkItem = ({ video, orientation }: Props) => {
 
-    const [ open, setOpen ] = useState(false);
-    
-    const itemRef = useRef<HTMLDivElement>(null as HTMLDivElement);
-    
-    return(
+    const [open, setOpen] = useState(false);
+
+    const itemRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
+
+    return (
         <div className="video-item" key={video._id} ref={itemRef}>
-            <img alt="video thumbnail" 
+            <img alt="video thumbnail"
                 className={
                     match(orientation)
                         .with("portrait", () => "work-video-mobile")
                         .with("landscape", () => "work-video-desktop")
                         .with(P._, () => "work-video-desktop")
-                        .run() 
+                        .run()
                     + " "
                     + match(video.link)
                         .with(P.string, () => "click-me")
                         .with(P._, () => "dont-click-me")
                         .run()
-                } 
-                onClick={(e) => { e.preventDefault(); video.link ? setOpen(true) : null }} 
-                src={ video.thumbnail }
+                }
+                onClick={(e) => { e.preventDefault(); video.link ? setOpen(true) : null }}
+                src={video.thumbnail ?? ""}
             />
             <WorkItemModal
                 open={open}
