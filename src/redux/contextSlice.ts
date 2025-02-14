@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface InitialState {
+    aboutImageUrl: string,
+    companyLogoUrl: string,
     currentOrientation: "portrait" | "landscape",
     matchAgainst: "landscape",
     showScrollText: boolean,
@@ -11,6 +13,8 @@ export interface InitialState {
 }
 
 const initialState: InitialState = {
+    aboutImageUrl: "",
+    companyLogoUrl: "",
     currentOrientation: window.matchMedia("(orientation: portrait)").matches ? 'portrait' : 'landscape',
     matchAgainst: "landscape",
     showScrollText: true,
@@ -32,6 +36,12 @@ export const contextSlice = createSlice({
         },
         setWindowDimensions(state, action: PayloadAction<{ width: number, height: number }>) {
             state.windowDimensions = action.payload
+        },
+        setAboutImageUrl(state, action: PayloadAction<string>) {
+            state.aboutImageUrl = action.payload
+        },
+        setCompanyLogoUrl(state, action: PayloadAction<string>) {
+            state.companyLogoUrl = action.payload
         }
     },
 });
